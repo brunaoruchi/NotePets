@@ -8,6 +8,8 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     flexDirection: 'row',
+    height: 60,
+    marginVertical: 16,
   },
   containerIcon: {
     marginLeft: '1%',
@@ -24,7 +26,7 @@ export default StyleSheet.create({
     width: '80%',
   },
   containerInputEyeContainer: {
-    width: '70%',
+    width: '68%',
   },
   containerIconEye: {
     width: '14%',
