@@ -12,7 +12,7 @@ export default class IconButton extends Component {
   render() {
     const {labelIcon, color, onPress} = this.props;
 
-    const iconsFontisto = ['angle-down', 'history', 'trash'];
+    const iconsFontisto = ['history', 'trash'];
 
     const iconsFontAwesome5 = ['pump-soap', 'prescription-bottle-alt'];
 

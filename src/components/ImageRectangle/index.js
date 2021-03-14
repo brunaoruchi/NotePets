@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {View, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
+
 import styles from './styles';
 
-export default class ImageCircle extends Component {
+export default class ImageRectangle extends Component {
   render() {
     const {sourceImage} = this.props;
 
@@ -13,7 +14,7 @@ export default class ImageCircle extends Component {
           <Image source={sourceImage} style={styles.containerImage} />
         ) : (
           <View style={styles.containerIcon}>
-            <Icon name="paw" size={30} color={'#FDE5C5'} />
+            <Icon name="paw" size={50} color={'#FDE5C5'} />
           </View>
         )}
       </View>
