@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {StyleSheet, View, TouchableOpacity, Image, Text} from 'react-native';
+import {View, TouchableOpacity, Image} from 'react-native';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -10,10 +10,13 @@ import {
 import Icon from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import styles from './styles';
+
 import Home from '../../pages/Home';
 import Pets from '../../pages/Pets';
 
 const Drawer = createDrawerNavigator();
+
 Icon.loadFont();
 MaterialCommunityIcons.loadFont();
 
@@ -100,30 +103,5 @@ function ProfileDrawer(props) {
 }
 
 function LineDrawer() {
-  return (
-    <View style={{backgroundColor: '#E0E0E0', height: 2, marginVertical: 8}} />
-  );
+  return <View style={styles.line} />;
 }
-const styles = StyleSheet.create({
-  container: {
-    height: 150,
-    backgroundColor: '#EDEBCB',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: -5,
-    paddingBottom: 20,
-  },
-  drawerStyle: {
-    width: 250,
-    backgroundColor: '#FFFFFF',
-  },
-  imageStyle: {
-    width: 70,
-    resizeMode: 'contain',
-  },
-  imageStyleLabel: {
-    width: 100,
-    marginTop: -30,
-    resizeMode: 'contain',
-  },
-});

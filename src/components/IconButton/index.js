@@ -10,14 +10,14 @@ MaterialCommunityIcons.loadFont();
 
 export default class IconButton extends Component {
   render() {
-    const {labelIcon, color} = this.props;
+    const {labelIcon, color, onPress} = this.props;
 
     const iconsFontisto = ['angle-down', 'history', 'trash'];
 
     const iconsFontAwesome5 = ['pump-soap', 'prescription-bottle-alt'];
 
     return (
-      <TouchableOpacity style={{alignItems: 'center'}} onPress={() => {}}>
+      <TouchableOpacity style={{alignItems: 'center'}} onPress={onPress}>
         {iconsFontisto.some((icon) => icon === labelIcon) ? (
           <Fontisto name={labelIcon} size={28} color={color} />
         ) : (

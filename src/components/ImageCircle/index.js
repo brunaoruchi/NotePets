@@ -9,7 +9,7 @@ export default class ImageCircle extends Component {
 
     return (
       <View style={styles.container}>
-        <Image source={{uri: sourceImage}} style={styles.containerImage} />
+        <Image source={sourceImage} style={styles.containerImage} />
       </View>
     );
   }
