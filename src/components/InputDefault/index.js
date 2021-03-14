@@ -7,9 +7,13 @@ import styles from './styles';
 Icon.loadFont();
 
 export default class InputDefault extends Component {
-  state = {
-    iconEye: true,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      iconEye: true,
+    };
+  }
 
   onPressIconEye = () => {
     if (this.state.iconEye) {
