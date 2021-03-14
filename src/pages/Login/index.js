@@ -3,10 +3,18 @@ import {View, Text} from 'react-native';
 
 import styles from './styles';
 
-export default function Login() {
+import Button from '../../components/Button';
+
+export default function Login(props) {
   return (
     <View style={styles.container}>
       <Text>Tela Login</Text>
+      <Button
+        title="Entrar"
+        onPress={() => {
+          props.navigation.navigate('Menu');
+        }}
+      />
     </View>
   );
 }

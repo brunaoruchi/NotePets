@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/Feather';
 
 Icon.loadFont();
 
-export default function HeaderDrawNav({title, navigation}) {
+export default function Header({title, navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.containerButton}>
@@ -15,7 +15,7 @@ export default function HeaderDrawNav({title, navigation}) {
             size={28}
             color="#481610"
             onPress={() => {
-              // navigation.openDrawer();
+              navigation.openDrawer();
             }}
           />
         </TouchableOpacity>

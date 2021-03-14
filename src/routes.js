@@ -5,6 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
 import Login from './pages/Login';
+import Menu from './components/DrawerMenu';
 
 export default function Routes() {
   return (
@@ -14,6 +15,11 @@ export default function Routes() {
           <Stack.Screen
             name="Login"
             component={Login}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Menu"
+            component={Menu}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
