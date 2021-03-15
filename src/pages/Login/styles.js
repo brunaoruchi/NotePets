@@ -1,11 +1,53 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 
 export default StyleSheet.create({
   container: {
     backgroundColor: '#EDEBCB',
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: '3.5%',
+    width: '100%',
+    flex: 1,
+    // minHeight: Dimensions.get('screen').height - 100,
+  },
+  containerImage: {
+    height: 180,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 25,
+  },
+  imageStyle: {
+    width: 110,
+    resizeMode: 'contain',
+  },
+  imageStyleLabel: {
+    width: 160,
+    marginTop: -5,
+    resizeMode: 'contain',
+  },
+  loginLabel: {
+    color: '#992B25',
+    fontSize: 22,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+  },
+  containerInput: {
+    width: '100%',
+    marginTop: 5,
+    justifyContent: 'space-between',
+  },
+  containerLabelForget: {
+    justifyContent: 'flex-start',
+    alignItems: 'flex-end',
+    width: '100%',
+    marginTop: -15,
+  },
+  loginLabelForget: {
+    color: '#992B25',
+    fontSize: 16,
+  },
+  containerButton: {
+    width: '100%',
+    marginBottom: 50,
   },
 });

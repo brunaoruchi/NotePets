@@ -18,8 +18,8 @@ export default StyleSheet.create({
     resizeMode: 'contain',
   },
   imageStyleLabel: {
-    width: 100,
-    marginTop: -30,
+    width: 95,
+    marginTop: -45,
     resizeMode: 'contain',
   },
   line: {

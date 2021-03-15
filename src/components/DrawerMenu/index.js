@@ -25,7 +25,7 @@ export default function Menu() {
     <Drawer.Navigator
       initialRouteName="Home"
       drawerStyle={styles.drawerStyle}
-      drawerContentOptions={{labelStyle: {fontSize: 18}}}
+      drawerContentOptions={{labelStyle: {fontSize: 16}}}
       drawerContent={(props) => <CustomDrawerContent {...props} />}>
       <Drawer.Screen
         name="Home"
@@ -34,7 +34,7 @@ export default function Menu() {
           drawerIcon: ({focused}) => (
             <Icon
               name="home"
-              size={30}
+              size={24}
               color={focused ? '#D76E33' : '#FBC072'}
             />
           ),
@@ -47,7 +47,7 @@ export default function Menu() {
           drawerIcon: ({focused}) => (
             <Icon
               name="paw"
-              size={30}
+              size={24}
               color={focused ? '#D76E33' : '#FBC072'}
             />
           ),
@@ -69,13 +69,13 @@ function CustomDrawerContent(props) {
       />
       <LineDrawer />
       <DrawerItem
-        label="Logout"
-        labelStyle={{color: '#D40000', fontSize: 18}}
+        label="Sair"
+        labelStyle={{color: '#D40000', fontSize: 16}}
         onPress={() => {
           props.navigation.popToTop();
         }}
         icon={() => (
-          <MaterialCommunityIcons name="logout" size={30} color="#D40000" />
+          <MaterialCommunityIcons name="logout" size={26} color="#D40000" />
         )}
       />
     </DrawerContentScrollView>

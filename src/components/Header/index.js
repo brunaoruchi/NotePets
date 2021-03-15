@@ -10,10 +10,10 @@ export default function Header({title, navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.containerButton}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity>
           <Icon
             name="menu"
-            size={28}
+            size={32}
             color="#481610"
             onPress={() => {
               navigation.openDrawer();
