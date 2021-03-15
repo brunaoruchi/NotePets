@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import styles from './styles';
@@ -8,7 +8,7 @@ import InputDefault from '../../components/InputDefault';
 import ButtonFooter from '../../components/ButtonFooter';
 import Button from '../../components/Button';
 
-export default function Login(props) {
+export default function Register(props) {
   return (
     <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
@@ -17,22 +17,18 @@ export default function Login(props) {
             source={require('../../assets/Icon.png')}
             style={styles.imageStyle}
           />
-          <Image
-            source={require('../../assets/NotePets.png')}
-            style={styles.imageStyleLabel}
-          />
         </View>
-        <Text style={styles.loginLabel}>Faça seu login</Text>
+        <Text style={styles.loginLabel}>Faça seu cadastro</Text>
         <View style={styles.containerInput}>
+          <InputDefault placeholder="Nome Completo" icon="user" />
           <InputDefault placeholder="E-mail" icon="email" />
           <InputDefault placeholder="Senha" icon="locked" secureTextEntry />
+          <InputDefault
+            placeholder="Confirmar a senha"
+            icon="locked"
+            secureTextEntry
+          />
         </View>
-        <View style={styles.containerLabelForget}>
-          <TouchableOpacity>
-            <Text style={styles.loginLabelForget}>Esqueceu a senha?</Text>
-          </TouchableOpacity>
-        </View>
-
         <View style={styles.containerButton}>
           <Button
             title="Entrar"
@@ -43,10 +39,10 @@ export default function Login(props) {
         </View>
       </View>
       <ButtonFooter
-        label="Criar uma conta"
-        icon="login"
+        label="Fazer login"
+        icon="arrow-back"
         onPress={() => {
-          props.navigation.navigate('Register');
+          props.navigation.navigate('Login');
         }}
       />
     </KeyboardAwareScrollView>

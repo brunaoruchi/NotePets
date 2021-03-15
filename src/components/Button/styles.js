@@ -8,7 +8,6 @@ export default StyleSheet.create({
     height: 60,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 54,
   },
 
   label: {

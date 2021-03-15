@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 import Zocial from 'react-native-vector-icons/Zocial';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import styles from './styles';
@@ -42,7 +43,23 @@ export default class InputDefault extends Component {
           {icon === 'email' ? (
             <Zocial style={styles.icon} name={icon} size={30} color="#992B25" />
           ) : (
-            <Icon style={styles.icon} name={icon} size={30} color="#992B25" />
+            <>
+              {icon === 'user' ? (
+                <FontAwesome5
+                  style={styles.icon}
+                  name="user-alt"
+                  size={30}
+                  color="#992B25"
+                />
+              ) : (
+                <Icon
+                  style={styles.icon}
+                  name={icon}
+                  size={30}
+                  color="#992B25"
+                />
+              )}
+            </>
           )}
         </View>
         <View
