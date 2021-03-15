@@ -4,9 +4,9 @@ export default StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'center',
-  },
-  button: {
+    alignItems: 'center',
     backgroundColor: '#FBC072',
+    height: 50,
   },
   text: {
     color: '#481610',
@@ -16,7 +16,7 @@ export default StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 0.25)',
     textShadowOffset: {width: 0, height: 2},
     textShadowRadius: 4,
-    paddingRight: '25%',
+    paddingRight: '22%',
   },
   containerTitle: {
     backgroundColor: '#FBC072',

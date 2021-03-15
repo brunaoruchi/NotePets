@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {View, TextInput, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Fontisto';
+import Zocial from 'react-native-vector-icons/Zocial';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import styles from './styles';
 
@@ -37,7 +39,11 @@ export default class InputDefault extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.containerIcon}>
-          <Icon style={styles.icon} name={icon} size={30} color="#992B25" />
+          {icon === 'email' ? (
+            <Zocial style={styles.icon} name={icon} size={30} color="#992B25" />
+          ) : (
+            <Icon style={styles.icon} name={icon} size={30} color="#992B25" />
+          )}
         </View>
         <View
           style={
@@ -58,11 +64,16 @@ export default class InputDefault extends Component {
             style={styles.containerIconEye}
             onPress={this.onPressIconEye}>
             {iconEye ? (
-              <Icon style={styles.icon} name="eye" size={28} color="#481610" />
-            ) : (
-              <Icon
+              <MaterialCommunityIcons
                 style={styles.icon}
-                name="eye-slash"
+                name="eye"
+                size={28}
+                color="#481610"
+              />
+            ) : (
+              <MaterialCommunityIcons
+                style={styles.icon}
+                name="eye-off"
                 size={28}
                 color="#481610"
               />
