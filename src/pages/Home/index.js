@@ -8,7 +8,7 @@ import styles from './styles';
 export default function Home({navigation}) {
   return (
     <>
-      <Header title="Home" navigation={navigation} />
+      <Header title="Anotações" navigation={navigation} />
       <View style={styles.container}>
         <Text>Tela Home</Text>
       </View>

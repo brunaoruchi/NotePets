@@ -8,12 +8,12 @@ Icon.loadFont();
 
 export default class ButtonFooter extends Component {
   render() {
-    const {label, icon} = this.props;
+    const {label, icon, onPress} = this.props;
 
     return (
       <>
         <View style={styles.line} />
-        <TouchableOpacity style={styles.container} onPress={() => {}}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
           <Icon name={icon} size={26} color="#992B25" />
           <Text style={styles.label}>{label}</Text>
         </TouchableOpacity>

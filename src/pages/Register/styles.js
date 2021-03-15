@@ -10,18 +10,12 @@ export default StyleSheet.create({
     flex: 1,
   },
   containerImage: {
-    height: 180,
+    height: 120,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 25,
   },
   imageStyle: {
-    width: 110,
-    resizeMode: 'contain',
-  },
-  imageStyleLabel: {
-    width: 160,
-    marginTop: -5,
+    width: 90,
     resizeMode: 'contain',
   },
   loginLabel: {
@@ -29,25 +23,15 @@ export default StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     alignSelf: 'center',
+    marginTop: -5,
   },
   containerInput: {
     width: '100%',
-    marginTop: 5,
     justifyContent: 'space-between',
-  },
-  containerLabelForget: {
-    justifyContent: 'flex-start',
-    alignItems: 'flex-end',
-    width: '100%',
-    marginTop: -15,
-  },
-  loginLabelForget: {
-    color: '#992B25',
-    fontSize: 16,
   },
   containerButton: {
     width: '100%',
-    marginBottom: 60,
-    marginTop: 50,
+    marginTop: 12,
+    marginBottom: 20,
   },
 });
