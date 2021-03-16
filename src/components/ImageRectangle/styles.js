@@ -3,12 +3,12 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   container: {
     borderRadius: 10,
-    width: 250,
+    width: 300,
     height: 150,
     alignItems: 'center',
   },
   containerImage: {
-    width: 250,
+    width: 300,
     height: 150,
     borderRadius: 10,
     aspectRatio: 1,
