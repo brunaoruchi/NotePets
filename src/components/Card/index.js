@@ -6,7 +6,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import styles from './styles';
 
 import ImageCircle from '../ImageCircle';
+import ImageRectangle from '../ImageRectangle';
 import IconButton from '../IconButton';
+
 import Icon from 'react-native-vector-icons/Fontisto';
 
 export default class Card extends Component {
@@ -27,31 +29,31 @@ export default class Card extends Component {
   };
 
   render() {
-    const {name, dateNote, category} = this.props;
+    const {pet, onPress} = this.props;
 
     const CategoryIcon = () => {
-      switch (category) {
-        case 'Banho e Tosa': {
+      switch (pet.notesPet[lastNote].cattegory) {
+        case '0': {
           return (
             <FontAwesome5
               style={styles.iconLabel}
               name="pump-soap"
-              size={20}
+              size={22}
               color="#481610"
             />
           );
         }
-        case 'Consulta Veterinária': {
+        case '1': {
           return (
             <MaterialCommunityIcons
               style={styles.iconLabel}
               name="medical-bag"
-              size={23}
+              size={24}
               color="#481610"
             />
           );
         }
-        case 'Vacina': {
+        case '2': {
           return (
             <MaterialCommunityIcons
               style={styles.iconLabel}
@@ -66,27 +68,40 @@ export default class Card extends Component {
             <FontAwesome5
               style={styles.iconLabel}
               name="prescription-bottle-alt"
-              size={18}
+              size={20}
               color="#481610"
             />
           );
         }
       }
     };
+
+    const lastNote = pet.notesPet.length - 1;
+    const cattegory = [
+      'Banho e Tosa',
+      'Consulta Veterinária',
+      'Vacinas',
+      'Vermifugação',
+    ];
     return (
       <>
         <View style={styles.container}>
           <View style={styles.containerPicture}>
-            <ImageCircle sourceImage={require('../../assets/cat.jpg')} />
+            <ImageCircle sourceImage={pet.picture} />
           </View>
           <View style={styles.containerLabel}>
-            <Text style={styles.labelName}>{name}</Text>
+            <Text style={styles.labelName}>{pet.name}</Text>
             <Text style={styles.labelLastNote}>
-              Última anotação: {dateNote} - {category} {CategoryIcon()}
+              Última anotação: {pet.notesPet[lastNote].date} -{' '}
+              {cattegory[pet.notesPet[lastNote].cattegory]} {CategoryIcon()}
             </Text>
           </View>
           <View style={styles.containerActions}>
-            <IconButton labelIcon="sticker-plus" color="#D76E33" />
+            <IconButton
+              labelIcon="sticker-plus"
+              color="#D76E33"
+              onPress={onPress}
+            />
             <TouchableOpacity
               style={{alignItems: 'center'}}
               onPress={this.onPressIconArrowDown}>
@@ -101,12 +116,17 @@ export default class Card extends Component {
         {this.state.openCard && (
           <View style={styles.containerInfo}>
             <View style={styles.line} />
-            <Text style={styles.nextDate}>Próxima Data: 12/03/2021</Text>
-            <Text style={styles.observation}>
-              Observação: Deve ser aplicado a medicação 1 no período de 12 em 12
-              horas. Fazer a limpeza da região durante uma semana.
+            <Text style={styles.nextDate}>
+              Próxima Data: {pet.notesPet[lastNote].dateRemember}
             </Text>
-            <View style={styles.photo} />
+            {pet.notesPet[lastNote].observation != '' ? (
+              <Text style={styles.observation}>
+                Observação: {pet.notesPet[lastNote].observation}{' '}
+              </Text>
+            ) : null}
+            <View style={styles.photo}>
+              <ImageRectangle sourceImage={pet.notesPet[lastNote].picture} />
+            </View>
           </View>
         )}
       </>

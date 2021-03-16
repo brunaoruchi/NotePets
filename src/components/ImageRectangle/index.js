@@ -11,7 +11,7 @@ export default class ImageRectangle extends Component {
     return (
       <View style={styles.container}>
         {sourceImage ? (
-          <Image source={sourceImage} style={styles.containerImage} />
+          <Image source={{uri: sourceImage}} style={styles.containerImage} />
         ) : (
           <View style={styles.containerIcon}>
             <Icon name="paw" size={50} color={'#FDE5C5'} />
