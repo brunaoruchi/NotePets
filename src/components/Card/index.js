@@ -119,7 +119,7 @@ export default class Card extends Component {
             <Text style={styles.nextDate}>
               Próxima Data: {pet.notesPet[lastNote].dateRemember}
             </Text>
-            {pet.notesPet[lastNote].observation != '' ? (
+            {pet.notesPet[lastNote].observation !== '' ? (
               <Text style={styles.observation}>
                 Observação: {pet.notesPet[lastNote].observation}{' '}
               </Text>

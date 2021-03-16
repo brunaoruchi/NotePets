@@ -60,7 +60,7 @@ export default StyleSheet.create({
     backgroundColor: '#D76E33',
     width: '100%',
     height: 1,
-    marginTop: -5,
+    marginTop: -1,
     marginBottom: 10,
   },
   nextDate: {
