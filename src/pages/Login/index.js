@@ -35,7 +35,7 @@ export default function Login(props) {
 
         <View style={styles.containerButton}>
           <Button
-            title="Entrar"
+            label="Entrar"
             onPress={() => {
               props.navigation.navigate('Menu');
             }}
