@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 
 import styles from './styles';
 import CardsPet from '../../components/CardsPet';
+import Button from '../../components/Button';
 
 export default class Pets extends React.Component {
   constructor(props) {
@@ -87,6 +88,12 @@ export default class Pets extends React.Component {
               Que tal atualizar as informações do seu pet? O histórico também
               está aqui!
             </Text>
+          </View>
+          <View style={styles.containerButton}>
+            <Button
+              label="Adicionar novo pet"
+              onPress={() => this.props.navigation.navigate('CreatePet')}
+            />
           </View>
           <CardsPet pets={this.state.data.pets} />
         </View>

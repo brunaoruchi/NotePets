@@ -20,7 +20,7 @@ export default function Register(props) {
         </View>
         <Text style={styles.loginLabel}>Faça seu cadastro</Text>
         <View style={styles.containerInput}>
-          <InputDefault placeholder="Nome Completo" icon="user" />
+          <InputDefault placeholder="Nome Completo" icon="user-alt" />
           <InputDefault placeholder="E-mail" icon="email" />
           <InputDefault placeholder="Senha" icon="locked" secureTextEntry />
           <InputDefault
@@ -31,7 +31,7 @@ export default function Register(props) {
         </View>
         <View style={styles.containerButton}>
           <Button
-            title="Entrar"
+            label="Cadastrar"
             onPress={() => {
               props.navigation.navigate('Menu');
             }}

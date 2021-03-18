@@ -3,22 +3,17 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   container: {
     backgroundColor: '#EDEBCB',
-    flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: '3.5%',
+    width: '100%',
   },
   containerText: {
+    paddingStart: '1.5%',
     width: '100%',
-  },
-  containerButton: {
-    width: '100%',
-    marginBottom: 16,
+    marginBottom: -15,
+    // transform: [{rotate: '10 deg'}],
   },
   text: {
     fontSize: 20,
-    fontFamily: 'DidactGothic-Regular',
-    textAlign: 'center',
-    paddingVertical: 16,
+    color: '#481610',
   },
 });

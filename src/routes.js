@@ -6,6 +6,7 @@ const Stack = createStackNavigator();
 
 import Login from './pages/Login';
 import Register from './pages/Register';
+import CreatePet from './pages/CreatePet';
 import Menu from './components/DrawerMenu';
 
 export default function Routes() {
@@ -21,6 +22,11 @@ export default function Routes() {
           <Stack.Screen
             name="Register"
             component={Register}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="CreatePet"
+            component={CreatePet}
             options={{headerShown: false}}
           />
           <Stack.Screen

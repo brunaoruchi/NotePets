@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, TextInput, TouchableOpacity} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 import Zocial from 'react-native-vector-icons/Zocial';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -36,68 +36,97 @@ export default class InputDefault extends Component {
     } = this.props;
 
     const {iconEye} = this.state;
-
+    const iconsFontAwesome5 = ['bone', 'user-alt'];
     return (
-      <View style={styles.container}>
-        <View style={styles.containerIcon}>
-          {icon === 'email' ? (
-            <Zocial style={styles.icon} name={icon} size={30} color="#992B25" />
-          ) : (
-            <>
-              {icon === 'user' ? (
-                <FontAwesome5
-                  style={styles.icon}
-                  name="user-alt"
-                  size={30}
-                  color="#992B25"
-                />
-              ) : (
-                <Icon
+      <>
+        {icon === 'weight-kilogram' ? (
+          <View style={styles.containerSmall}>
+            <View style={styles.containerIconSmall}>
+              <MaterialCommunityIcons
+                style={styles.icon}
+                name={icon}
+                size={30}
+                color="#992B25"
+              />
+            </View>
+            <View style={styles.containerInputSmall}>
+              <TextInput
+                styles={styles.boxInputSmall}
+                keyboardType={keyboardType || 'default'}
+                placeholder={placeholder}
+                returnKeyType={returnKeyType || 'done'}
+              />
+            </View>
+            <Text style={styles.textInputSmall}>Kg</Text>
+          </View>
+        ) : (
+          <View style={styles.container}>
+            <View style={styles.containerIcon}>
+              {icon === 'email' ? (
+                <Zocial
                   style={styles.icon}
                   name={icon}
                   size={30}
                   color="#992B25"
                 />
+              ) : (
+                <>
+                  {iconsFontAwesome5.some((item) => item === icon) ? (
+                    <FontAwesome5
+                      style={styles.icon}
+                      name={icon}
+                      size={30}
+                      color="#992B25"
+                    />
+                  ) : (
+                    <Icon
+                      style={styles.icon}
+                      name={icon}
+                      size={30}
+                      color="#992B25"
+                    />
+                  )}
+                </>
               )}
-            </>
-          )}
-        </View>
-        <View
-          style={
-            secureTextEntry
-              ? styles.containerInputEyeContainer
-              : styles.containerInput
-          }>
-          <TextInput
-            styles={styles.boxInput}
-            keyboardType={keyboardType || 'default'}
-            placeholder={placeholder}
-            returnKeyType={returnKeyType || 'done'}
-            secureTextEntry={secureTextEntry ? iconEye : false}
-          />
-        </View>
-        {secureTextEntry ? (
-          <TouchableOpacity
-            style={styles.containerIconEye}
-            onPress={this.onPressIconEye}>
-            {iconEye ? (
-              <MaterialCommunityIcons
-                style={styles.icon}
-                name="eye"
-                size={28}
-                color="#481610"
+            </View>
+            <View
+              style={
+                secureTextEntry
+                  ? styles.containerInputEyeContainer
+                  : styles.containerInput
+              }>
+              <TextInput
+                styles={styles.boxInput}
+                keyboardType={keyboardType || 'default'}
+                placeholder={placeholder}
+                returnKeyType={returnKeyType || 'done'}
+                secureTextEntry={secureTextEntry ? iconEye : false}
               />
-            ) : (
-              <MaterialCommunityIcons
-                style={styles.icon}
-                name="eye-off"
-                size={28}
-                color="#481610"
-              />
-            )}
-          </TouchableOpacity>
-        ) : null}
-      </View>
+            </View>
+            {secureTextEntry ? (
+              <TouchableOpacity
+                style={styles.containerIconEye}
+                onPress={this.onPressIconEye}>
+                {iconEye ? (
+                  <MaterialCommunityIcons
+                    style={styles.icon}
+                    name="eye"
+                    size={28}
+                    color="#481610"
+                  />
+                ) : (
+                  <MaterialCommunityIcons
+                    style={styles.icon}
+                    name="eye-off"
+                    size={28}
+                    color="#481610"
+                  />
+                )}
+              </TouchableOpacity>
+            ) : null}
+          </View>
+        )}
+      </>
     );
   }
 }
