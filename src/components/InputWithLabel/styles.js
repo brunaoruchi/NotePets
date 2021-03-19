@@ -13,7 +13,7 @@ export default StyleSheet.create({
     // transform: [{rotate: '10 deg'}],
   },
   text: {
-    fontSize: 20,
+    fontSize: 18,
     color: '#481610',
   },
 });

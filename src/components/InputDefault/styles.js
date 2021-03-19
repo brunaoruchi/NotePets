@@ -8,7 +8,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     flexDirection: 'row',
-    height: 60,
+    height: 50,
     marginVertical: 16,
   },
   containerSmall: {
@@ -18,13 +18,13 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     flexDirection: 'row',
-    height: 60,
+    height: 50,
     marginVertical: 16,
   },
 
   containerIcon: {
     marginLeft: '1%',
-    width: '15%',
+    width: '13%',
   },
   icon: {
     alignSelf: 'center',
@@ -37,10 +37,10 @@ export default StyleSheet.create({
     width: '80%',
   },
   containerInputEyeContainer: {
-    width: '68%',
+    width: '70%',
   },
   containerIconEye: {
-    width: '14%',
+    width: '16%',
   },
 
   containerIconSmall: {
@@ -57,8 +57,21 @@ export default StyleSheet.create({
     color: '#424242',
   },
   textInputSmall: {
-    fontSize: 18,
+    fontSize: 16,
     color: '#992B25',
     fontWeight: 'bold',
+  },
+  containerSmallCalendar: {
+    width: '50%',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    flexDirection: 'row',
+    height: 50,
+    marginVertical: 16,
+  },
+  containerIconSmallCalendar: {
+    width: '30%',
   },
 });

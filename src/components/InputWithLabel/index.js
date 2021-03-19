@@ -6,7 +6,7 @@ import styles from './styles';
 
 export default class InputWithLabel extends Component {
   render() {
-    const {label, placeholder, icon, keyboardType} = this.props;
+    const {label, placeholder, icon, keyboardType, onPress} = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.containerText}>
@@ -16,6 +16,7 @@ export default class InputWithLabel extends Component {
           placeholder={placeholder}
           icon={icon}
           keyboardType={keyboardType}
+          onPress={onPress}
         />
       </View>
     );
