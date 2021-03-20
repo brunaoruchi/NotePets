@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {View, Text, Button, TouchableOpacity} from 'react-native';
+import {View, Text} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 import styles from './styles';
 
 import Header from '../../components/Header';
 import InputWithLabel from '../../components/InputWithLabel';
-import ButtonComponent from '../../components/Button';
+import Button from '../../components/Button';
 import ImageCircle from '../../components/ImageCircle';
 import IconButton from '../../components/IconButton';
 
@@ -78,7 +78,7 @@ export default class CreatePet extends Component {
               onChange={this.onChange}
             />
           )}
-          <ButtonComponent label="Salvar" />
+          <Button label="Salvar" />
         </View>
       </>
     );

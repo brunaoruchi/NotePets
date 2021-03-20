@@ -6,11 +6,11 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FBC072',
-    height: 50,
+    height: 45,
   },
   text: {
     color: '#481610',
-    fontSize: 30,
+    fontSize: 26,
     fontFamily: 'DidactGothic-Regular',
     alignSelf: 'center',
     textShadowColor: 'rgba(0, 0, 0, 0.25)',

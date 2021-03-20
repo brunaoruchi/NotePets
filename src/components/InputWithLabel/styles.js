@@ -10,10 +10,10 @@ export default StyleSheet.create({
     paddingStart: '1.5%',
     width: '100%',
     marginBottom: -15,
-    // transform: [{rotate: '10 deg'}],
   },
   text: {
-    fontSize: 18,
+    fontSize: 20,
     color: '#481610',
+    fontFamily: 'Roboto-Regular',
   },
 });

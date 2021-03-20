@@ -33,7 +33,7 @@ export default StyleSheet.create({
   },
   labelInfoContainer: {},
   labelInfo: {
-    fontSize: 19,
+    fontSize: 18,
     fontFamily: 'DidactGothic-Regular',
   },
   containerActions: {

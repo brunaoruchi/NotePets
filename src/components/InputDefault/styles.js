@@ -45,7 +45,7 @@ export default StyleSheet.create({
 
   containerIconSmall: {
     marginLeft: '3%',
-    width: '35%',
+    width: '32%',
   },
   containerInputSmall: {
     width: '40%',

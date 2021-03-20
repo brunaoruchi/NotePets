@@ -14,7 +14,7 @@ export default StyleSheet.create({
     color: '#992B25',
     fontSize: 22,
     paddingLeft: 10,
-    fontWeight: 'bold',
+    fontFamily: 'Roboto-Medium',
   },
 
   line: {

@@ -27,7 +27,7 @@ export default StyleSheet.create({
   loginLabel: {
     color: '#992B25',
     fontSize: 22,
-    fontWeight: 'bold',
+    fontFamily: 'Roboto-Medium',
     alignSelf: 'center',
   },
   containerInput: {
@@ -47,7 +47,7 @@ export default StyleSheet.create({
   },
   containerButton: {
     width: '100%',
-    marginBottom: 60,
-    marginTop: 50,
+    marginBottom: 70,
+    marginTop: 60,
   },
 });

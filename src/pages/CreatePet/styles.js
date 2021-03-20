@@ -20,7 +20,8 @@ export default StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     alignItems: 'flex-start',
-    // paddingRight: '3.5%',
+    marginBottom: 50,
+    marginTop: 6,
   },
   containerInputSmall: {
     width: '100%',
