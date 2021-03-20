@@ -95,7 +95,12 @@ export default class Pets extends React.Component {
               onPress={() => this.props.navigation.navigate('CreatePet')}
             />
           </View>
-          <CardsPet pets={this.state.data.pets} />
+          <CardsPet
+            pets={this.state.data.pets}
+            onPressEdit={() => this.props.navigation.navigate('UpdatePet')}
+            onPressDelete={() => {}}
+            onPressHistory={() => this.props.navigation.navigate('History')}
+          />
         </View>
       </>
     );

@@ -16,7 +16,7 @@ export default class CardPet extends Component {
   }
 
   render() {
-    const {pet, onPress} = this.props;
+    const {pet, onPressEdit, onPressHistory, onPressDelete} = this.props;
 
     return (
       <>
@@ -34,9 +34,21 @@ export default class CardPet extends Component {
             </View>
           </View>
           <View style={styles.containerActions}>
-            <IconButton labelIcon="pencil" color="#D76E33" onPress={onPress} />
-            <IconButton labelIcon="trash" color="#C80000" onPress={onPress} />
-            <IconButton labelIcon="history" color="#481610" onPress={onPress} />
+            <IconButton
+              labelIcon="pencil"
+              color="#D76E33"
+              onPress={onPressEdit}
+            />
+            <IconButton
+              labelIcon="trash"
+              color="#C80000"
+              onPress={onPressDelete}
+            />
+            <IconButton
+              labelIcon="history"
+              color="#481610"
+              onPress={onPressHistory}
+            />
           </View>
         </View>
       </>
