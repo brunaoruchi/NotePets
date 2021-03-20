@@ -3,13 +3,13 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   container: {
     borderRadius: 50,
-    width: 100,
-    height: 100,
+    width: 95,
+    height: 95,
     alignItems: 'center',
   },
   containerImage: {
-    width: 100,
-    height: 100,
+    width: 95,
+    height: 95,
     borderRadius: 50,
     aspectRatio: 1,
     borderColor: '#481610',
@@ -17,8 +17,8 @@ export default StyleSheet.create({
   },
   containerIcon: {
     backgroundColor: '#FBC072',
-    width: 100,
-    height: 100,
+    width: 95,
+    height: 95,
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',

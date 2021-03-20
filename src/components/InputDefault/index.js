@@ -33,6 +33,7 @@ export default class InputDefault extends Component {
       icon,
       returnKeyType,
       secureTextEntry,
+      onPress,
     } = this.props;
 
     const {iconEye} = this.state;
@@ -45,7 +46,7 @@ export default class InputDefault extends Component {
               <MaterialCommunityIcons
                 style={styles.icon}
                 name={icon}
-                size={30}
+                size={28}
                 color="#992B25"
               />
             </View>
@@ -60,71 +61,95 @@ export default class InputDefault extends Component {
             <Text style={styles.textInputSmall}>Kg</Text>
           </View>
         ) : (
-          <View style={styles.container}>
-            <View style={styles.containerIcon}>
-              {icon === 'email' ? (
-                <Zocial
-                  style={styles.icon}
-                  name={icon}
-                  size={30}
-                  color="#992B25"
-                />
-              ) : (
-                <>
-                  {iconsFontAwesome5.some((item) => item === icon) ? (
-                    <FontAwesome5
+          <>
+            {icon === 'calendar' ? (
+              <TouchableOpacity onPress={onPress}>
+                <View style={styles.containerSmallCalendar}>
+                  <View style={styles.containerIconSmallCalendar}>
+                    <MaterialCommunityIcons
                       style={styles.icon}
                       name={icon}
-                      size={30}
+                      size={28}
+                      color="#992B25"
+                    />
+                  </View>
+                  <View style={styles.containerInputSmall}>
+                    <TextInput
+                      styles={styles.boxInputSmall}
+                      placeholder={placeholder}
+                      editable={false}
+                    />
+                  </View>
+                </View>
+              </TouchableOpacity>
+            ) : (
+              <View style={styles.container}>
+                <View style={styles.containerIcon}>
+                  {icon === 'email' ? (
+                    <Zocial
+                      style={styles.icon}
+                      name={icon}
+                      size={25}
                       color="#992B25"
                     />
                   ) : (
-                    <Icon
-                      style={styles.icon}
-                      name={icon}
-                      size={30}
-                      color="#992B25"
-                    />
+                    <>
+                      {iconsFontAwesome5.some((item) => item === icon) ? (
+                        <FontAwesome5
+                          style={styles.icon}
+                          name={icon}
+                          size={25}
+                          color="#992B25"
+                        />
+                      ) : (
+                        <Icon
+                          style={styles.icon}
+                          name={icon}
+                          size={25}
+                          color="#992B25"
+                        />
+                      )}
+                    </>
                   )}
-                </>
-              )}
-            </View>
-            <View
-              style={
-                secureTextEntry
-                  ? styles.containerInputEyeContainer
-                  : styles.containerInput
-              }>
-              <TextInput
-                styles={styles.boxInput}
-                keyboardType={keyboardType || 'default'}
-                placeholder={placeholder}
-                returnKeyType={returnKeyType || 'done'}
-                secureTextEntry={secureTextEntry ? iconEye : false}
-              />
-            </View>
-            {secureTextEntry ? (
-              <TouchableOpacity
-                style={styles.containerIconEye}
-                onPress={this.onPressIconEye}>
-                {iconEye ? (
-                  <MaterialCommunityIcons
-                    style={styles.icon}
-                    name="eye"
-                    size={28}
-                    color="#481610"
+                </View>
+                <View
+                  style={
+                    secureTextEntry
+                      ? styles.containerInputEyeContainer
+                      : styles.containerInput
+                  }>
+                  <TextInput
+                    styles={styles.boxInput}
+                    keyboardType={keyboardType || 'default'}
+                    placeholder={placeholder}
+                    returnKeyType={returnKeyType || 'done'}
+                    secureTextEntry={secureTextEntry ? iconEye : false}
                   />
-                ) : (
-                  <MaterialCommunityIcons
-                    style={styles.icon}
-                    name="eye-off"
-                    size={28}
-                    color="#481610"
-                  />
-                )}
-              </TouchableOpacity>
-            ) : null}
-          </View>
+                </View>
+                {secureTextEntry ? (
+                  <TouchableOpacity
+                    style={styles.containerIconEye}
+                    onPress={this.onPressIconEye}>
+                    {iconEye ? (
+                      <MaterialCommunityIcons
+                        style={styles.icon}
+                        name="eye"
+                        size={28}
+                        color="#481610"
+                      />
+                    ) : (
+                      <MaterialCommunityIcons
+                        style={styles.icon}
+                        name="eye-off"
+                        size={28}
+                        color="#481610"
+                      />
+                    )}
+                  </TouchableOpacity>
+                ) : null}
+              </View>
+            )}
+          </>
         )}
       </>
     );

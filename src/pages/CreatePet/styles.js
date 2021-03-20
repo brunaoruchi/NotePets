@@ -16,10 +16,19 @@ export default StyleSheet.create({
     textAlign: 'center',
     paddingVertical: 16,
   },
-
+  containerInputSmallRow: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginBottom: 50,
+    marginTop: 6,
+  },
   containerInputSmall: {
     width: '100%',
-    alignItems: 'flex-start',
+  },
+  containerInputSmallCalendar: {
+    width: '100%',
+    marginLeft: '-50%',
   },
   camera: {
     backgroundColor: '#D76E33',

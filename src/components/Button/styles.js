@@ -13,6 +13,6 @@ export default StyleSheet.create({
   label: {
     color: '#FFF',
     fontSize: 24,
-    fontWeight: 'bold',
+    fontFamily: 'Roboto-Medium',
   },
 });

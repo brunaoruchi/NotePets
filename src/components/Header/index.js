@@ -19,7 +19,7 @@ export default class InputWithLabel extends Component {
               onPress={() => {
                 navigation.openDrawer();
               }}>
-              <Icon name="menu" size={32} color="#481610" />
+              <Icon name="menu" size={30} color="#481610" />
             </TouchableOpacity>
           ) : (
             <TouchableOpacity

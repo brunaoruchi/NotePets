@@ -4,10 +4,10 @@ export default StyleSheet.create({
   container: {
     backgroundColor: '#FFFFFF',
     width: '100%',
-    height: 135,
+    height: 130,
     borderRadius: 20,
     flexDirection: 'row',
-    paddingVertical: '4%',
+    paddingVertical: '2%',
     paddingRight: '1%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -25,7 +25,6 @@ export default StyleSheet.create({
   containerLabel: {
     justifyContent: 'space-between',
     height: '100%',
-    paddingLeft: '1%',
     width: '50%',
   },
   labelName: {
@@ -35,13 +34,13 @@ export default StyleSheet.create({
   },
   labelLastNote: {
     height: '70%',
-    fontSize: 19,
+    fontSize: 18,
     fontFamily: 'DidactGothic-Regular',
   },
   containerActions: {
     width: '15%',
     justifyContent: 'space-between',
-    height: '100%',
+    height: '85%',
   },
   containerInfo: {
     backgroundColor: '#FFFFFF',
@@ -60,7 +59,7 @@ export default StyleSheet.create({
     backgroundColor: '#D76E33',
     width: '100%',
     height: 1,
-    marginTop: -1,
+    // marginTop: -1,
     marginBottom: 10,
   },
   nextDate: {
