@@ -7,9 +7,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: '3.5%',
   },
-  containerText: {
-    width: '100%',
-  },
   text: {
     fontSize: 20,
     fontFamily: 'DidactGothic-Regular',
@@ -24,25 +21,47 @@ export default StyleSheet.create({
     marginBottom: 50,
     marginTop: 6,
   },
-  containerInputSmall: {
+
+  containerInputSmallCalendar: {
+    paddingRight: 5,
     flex: 1,
   },
-  containerInputSmallCalendar: {
+
+  containerInputSmallCalendar2: {
     flex: 1,
+    paddingLeft: 5,
   },
   cameraContainer: {
     position: 'relative',
-    marginBottom: 25,
+    alignItems: 'center',
   },
   camera: {
     position: 'absolute',
-    bottom: -15,
-    right: -15,
+    bottom: -20,
+    right: 10,
     backgroundColor: '#D76E33',
     borderRadius: 50,
     width: 45,
     height: 45,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  label: {
+    fontSize: 20,
+    color: '#481610',
+    fontFamily: 'Roboto-Regular',
+  },
+  containerLabelCamera: {
+    width: '100%',
+  },
+  inputObservation: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    height: 120,
+    textAlignVertical: 'top',
+    width: '100%',
+    fontSize: 16,
+    padding: 10,
   },
 });

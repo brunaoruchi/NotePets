@@ -88,7 +88,10 @@ export default class Home extends React.Component {
               alguma nova!
             </Text>
           </View>
-          <Cards notes={this.state.data.pets} />
+          <Cards
+            notes={this.state.data.pets}
+            onPressAddNote={() => this.props.navigation.navigate('CreateNote')}
+          />
         </View>
       </>
     );

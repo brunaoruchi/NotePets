@@ -29,7 +29,7 @@ export default class Card extends Component {
   };
 
   render() {
-    const {pet, onPress} = this.props;
+    const {pet, onPress, onPressAddNote} = this.props;
 
     const CategoryIcon = () => {
       switch (pet.notesPet[lastNote].cattegory) {
@@ -100,7 +100,7 @@ export default class Card extends Component {
             <IconButton
               labelIcon="sticker-plus"
               color="#D76E33"
-              onPress={onPress}
+              onPress={onPressAddNote}
             />
             <TouchableOpacity
               style={{alignItems: 'center'}}
