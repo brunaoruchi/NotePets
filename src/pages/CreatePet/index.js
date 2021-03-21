@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import styles from './styles';
 
@@ -32,20 +33,22 @@ export default class CreatePet extends Component {
 
   render() {
     return (
-      <>
+      <KeyboardAwareScrollView>
         <Header title="Adicionar pet" navigation={this.props.navigation} />
         <View style={styles.container}>
           <Text style={styles.text}>
             Insira todas as informações do seu pet!
           </Text>
-          <ImageCircle />
+          <View style={styles.cameraContainer}>
+            <ImageCircle />
 
-          <View style={styles.camera}>
-            <IconButton
-              labelIcon="camera"
-              color="#FFFFFF"
-              onPress={() => console.log('hey')}
-            />
+            <View style={styles.camera}>
+              <IconButton
+                labelIcon="camera"
+                color="#FFFFFF"
+                onPress={() => console.log('hey')}
+              />
+            </View>
           </View>
 
           <InputWithLabel label="Nome" placeholder="Nome" icon="bone" />
@@ -80,7 +83,7 @@ export default class CreatePet extends Component {
           )}
           <Button label="Salvar" />
         </View>
-      </>
+      </KeyboardAwareScrollView>
     );
   }
 }

@@ -19,25 +19,30 @@ export default StyleSheet.create({
   containerInputSmallRow: {
     width: '100%',
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'space-around',
     marginBottom: 50,
     marginTop: 6,
   },
   containerInputSmall: {
-    width: '100%',
+    flex: 1,
   },
   containerInputSmallCalendar: {
-    width: '100%',
-    marginLeft: '-50%',
+    flex: 1,
+  },
+  cameraContainer: {
+    position: 'relative',
+    marginBottom: 25,
   },
   camera: {
+    position: 'absolute',
+    bottom: -15,
+    right: -15,
     backgroundColor: '#D76E33',
     borderRadius: 50,
     width: 45,
     height: 45,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: '-8%',
-    marginLeft: '20%',
   },
 });

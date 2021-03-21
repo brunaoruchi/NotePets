@@ -10,6 +10,8 @@ import Button from '../../components/Button';
 import ImageCircle from '../../components/ImageCircle';
 import IconButton from '../../components/IconButton';
 
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+
 export default class CreatePet extends Component {
   constructor(props) {
     super(props);
@@ -32,18 +34,20 @@ export default class CreatePet extends Component {
 
   render() {
     return (
-      <>
+      <KeyboardAwareScrollView>
         <Header title="Alterar pet" navigation={this.props.navigation} />
         <View style={styles.container}>
           <Text style={styles.text}>Atualize as informações do seu pet!</Text>
-          <ImageCircle />
+          <View style={styles.cameraContainer}>
+            <ImageCircle />
 
-          <View style={styles.camera}>
-            <IconButton
-              labelIcon="camera"
-              color="#FFFFFF"
-              onPress={() => console.log('hey')}
-            />
+            <View style={styles.camera}>
+              <IconButton
+                labelIcon="camera"
+                color="#FFFFFF"
+                onPress={() => console.log('hey')}
+              />
+            </View>
           </View>
 
           <InputWithLabel label="Nome" placeholder="Nome" icon="bone" />
@@ -78,7 +82,7 @@ export default class CreatePet extends Component {
           )}
           <Button label="Salvar" />
         </View>
-      </>
+      </KeyboardAwareScrollView>
     );
   }
 }

@@ -12,7 +12,7 @@ export default StyleSheet.create({
     marginVertical: 16,
   },
   containerSmall: {
-    width: '40%',
+    width: '75%',
     backgroundColor: '#FFFFFF',
     borderRadius: 10,
     alignItems: 'center',
@@ -55,6 +55,7 @@ export default StyleSheet.create({
   boxInputSmall: {
     backgroundColor: '#fff',
     color: '#424242',
+    fontSize: 16,
   },
   textInputSmall: {
     fontSize: 16,
@@ -62,7 +63,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   containerSmallCalendar: {
-    width: '50%',
+    width: '100%',
     backgroundColor: '#FFFFFF',
     borderRadius: 10,
     alignItems: 'center',
