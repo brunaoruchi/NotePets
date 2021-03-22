@@ -55,6 +55,9 @@ export default StyleSheet.create({
   containerLabelCamera: {
     width: '100%',
   },
+  containerObservation: {
+    width: '100%',
+  },
   inputObservation: {
     backgroundColor: '#FFFFFF',
     borderRadius: 20,

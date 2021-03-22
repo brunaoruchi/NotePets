@@ -67,7 +67,7 @@ export default class CreateNote extends Component {
               </View>
             </View>
           </View>
-          <View style={{width: '100%'}}>
+          <View style={styles.containerObservation}>
             <Text style={styles.label}>Observação</Text>
             <TextInput
               style={styles.inputObservation}
