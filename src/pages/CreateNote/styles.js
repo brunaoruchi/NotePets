@@ -6,6 +6,7 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingHorizontal: '3.5%',
+    paddingBottom: 30,
   },
   text: {
     fontSize: 20,
@@ -18,7 +19,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    marginBottom: 50,
+    marginBottom: 6,
     marginTop: 6,
   },
 
@@ -54,9 +55,11 @@ export default StyleSheet.create({
   },
   containerLabelCamera: {
     width: '100%',
+    marginBottom: 16,
   },
   containerObservation: {
     width: '100%',
+    marginBottom: 30,
   },
   inputObservation: {
     backgroundColor: '#FFFFFF',
@@ -66,5 +69,40 @@ export default StyleSheet.create({
     width: '100%',
     fontSize: 16,
     padding: 10,
+  },
+  containerCategory: {
+    width: '100%',
+    marginBottom: 16,
+  },
+  containerButtons: {
+    paddingBottom: 5,
+    justifyContent: 'center',
+    width: '100%',
+    flexDirection: 'row',
+  },
+  button: {
+    borderColor: '#D76E33',
+    flex: 1,
+    borderTopWidth: 2,
+    borderBottomWidth: 2,
+    borderStartWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 45,
+  },
+  containerFooterLineTop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  containerFooterLineBottom: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  labelCategory: {
+    fontSize: 16,
+    color: '#481610',
+    fontFamily: 'Roboto-Regular',
+    flex: 1,
+    justifyContent: 'center',
   },
 });
