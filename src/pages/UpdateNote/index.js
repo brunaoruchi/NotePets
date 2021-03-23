@@ -87,9 +87,9 @@ export default class UpdateNote extends Component {
 
     return (
       <KeyboardAwareScrollView>
-        <Header title="Nova anotação" navigation={this.props.navigation} />
+        <Header title="Editar anotação" navigation={this.props.navigation} />
         <View style={styles.container}>
-          <Text style={styles.text}>Nova anotação do Rei!</Text>
+          <Text style={styles.text}>Atualize a anotação do Rei!</Text>
           <View style={styles.containerInputSmallRow}>
             <View style={styles.containerInputSmallCalendar}>
               <InputWithLabel
