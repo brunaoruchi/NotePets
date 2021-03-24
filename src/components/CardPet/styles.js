@@ -31,7 +31,6 @@ export default StyleSheet.create({
     fontSize: 24,
     fontFamily: 'DidactGothic-Regular',
   },
-  labelInfoContainer: {},
   labelInfo: {
     fontSize: 18,
     fontFamily: 'DidactGothic-Regular',

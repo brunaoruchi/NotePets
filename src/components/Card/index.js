@@ -21,11 +21,7 @@ export default class Card extends Component {
   }
 
   onPressIconArrowDown = () => {
-    if (this.state.openCard) {
-      this.setState({openCard: false});
-    } else {
-      this.setState({openCard: true});
-    }
+    return this.setState({openCard: !this.state.openCard});
   };
 
   render() {
