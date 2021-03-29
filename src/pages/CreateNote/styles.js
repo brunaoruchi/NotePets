@@ -39,7 +39,7 @@ export default StyleSheet.create({
   camera: {
     position: 'absolute',
     bottom: -20,
-    right: 10,
+    right: 0,
     backgroundColor: '#D76E33',
     borderRadius: 50,
     width: 45,
@@ -99,7 +99,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   labelCategory: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#481610',
     fontFamily: 'Roboto-Regular',
     flex: 1,

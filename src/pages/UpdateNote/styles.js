@@ -99,7 +99,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   labelCategory: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#481610',
     fontFamily: 'Roboto-Regular',
     flex: 1,

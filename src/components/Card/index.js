@@ -21,18 +21,16 @@ export default class Card extends Component {
   }
 
   onPressIconArrowDown = () => {
-    if (this.state.openCard) {
-      this.setState({openCard: false});
-    } else {
-      this.setState({openCard: true});
-    }
+    return this.setState({openCard: !this.state.openCard});
   };
 
   render() {
-    const {pet, onPress, onPressAddNote} = this.props;
+    const {pet, onPressAddNote} = this.props;
+
+    const namePet = pet.name;
 
     const CategoryIcon = () => {
-      switch (pet.notesPet[lastNote].cattegory) {
+      switch (pet.notes[lastNote].category) {
         case '0': {
           return (
             <FontAwesome5
@@ -76,13 +74,16 @@ export default class Card extends Component {
       }
     };
 
-    const lastNote = pet.notesPet.length - 1;
-    const cattegory = [
+    const lastNote = pet.notes.length - 1;
+    const category = [
       'Banho e Tosa',
       'Consulta Veterinária',
       'Vacinas',
-      'Vermifugação',
+      'Vermífugo',
     ];
+    const date = pet.notes[lastNote].date;
+    const dateRemember = pet.notes[lastNote].dateRemember;
+
     return (
       <>
         <View style={styles.container}>
@@ -92,15 +93,16 @@ export default class Card extends Component {
           <View style={styles.containerLabel}>
             <Text style={styles.labelName}>{pet.name}</Text>
             <Text style={styles.labelLastNote}>
-              Última anotação: {pet.notesPet[lastNote].date} -{' '}
-              {cattegory[pet.notesPet[lastNote].cattegory]} {CategoryIcon()}
+              Última anotação: {new Date(date).getDate()}/
+              {new Date(date).getMonth() + 1}/{new Date(date).getFullYear()} -{' '}
+              {category[pet.notes[lastNote].category]} {CategoryIcon()}
             </Text>
           </View>
           <View style={styles.containerActions}>
             <IconButton
               labelIcon="sticker-plus"
               color="#D76E33"
-              onPress={onPressAddNote}
+              onPress={() => onPressAddNote({namePet})}
             />
             <TouchableOpacity
               style={{alignItems: 'center'}}
@@ -117,15 +119,17 @@ export default class Card extends Component {
           <View style={styles.containerInfo}>
             <View style={styles.line} />
             <Text style={styles.nextDate}>
-              Próxima Data: {pet.notesPet[lastNote].dateRemember}
+              Próxima Data: {new Date(dateRemember).getDate()}/
+              {new Date(dateRemember).getMonth() + 1}/
+              {new Date(dateRemember).getFullYear()}
             </Text>
-            {pet.notesPet[lastNote].observation !== '' ? (
+            {pet.notes[lastNote].observation !== '' ? (
               <Text style={styles.observation}>
-                Observação: {pet.notesPet[lastNote].observation}{' '}
+                Observação: {pet.notes[lastNote].observation}{' '}
               </Text>
             ) : null}
             <View style={styles.photo}>
-              <ImageRectangle sourceImage={pet.notesPet[lastNote].picture} />
+              <ImageRectangle sourceImage={pet.notes[lastNote].picture} />
             </View>
           </View>
         )}
