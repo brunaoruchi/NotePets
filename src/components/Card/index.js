@@ -79,7 +79,7 @@ export default class Card extends Component {
       'Banho e Tosa',
       'Consulta Veterinária',
       'Vacinas',
-      'Vermifugação',
+      'Vermífugo',
     ];
     const date = pet.notes[lastNote].date;
     const dateRemember = pet.notes[lastNote].dateRemember;

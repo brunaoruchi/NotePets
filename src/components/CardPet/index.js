@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, Image} from 'react-native';
 
 import styles from './styles';
 
@@ -7,14 +7,6 @@ import ImageCircle from '../ImageCircle';
 import IconButton from '../IconButton';
 
 export default class CardPet extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      openCard: false,
-    };
-  }
-
   render() {
     const {pet, onPressEdit, onPressHistory, onPressDelete} = this.props;
 
@@ -23,9 +15,9 @@ export default class CardPet extends Component {
         year = today.getFullYear(),
         month = today.getMonth() + 1,
         day = today.getDate(),
-        yearBirthday = 1996,
-        monthBirthday = 8,
-        dayBirthday = 11,
+        yearBirthday = new Date(pet.dateBirthday).getFullYear(),
+        monthBirthday = new Date(pet.dateBirthday).getMonth() + 1,
+        dayBirthday = new Date(pet.dateBirthday).getDate(),
         age = year - yearBirthday;
 
       if (
@@ -56,8 +48,9 @@ export default class CardPet extends Component {
                 Raça: {pet.breed}
               </Text>
               <Text style={styles.labelInfo}>Peso: {pet.weight} Kg</Text>
-              <Text style={styles.labelInfo}>
-                Niver: {new Date(dateBirthday).getDate()}/
+              <Text style={[styles.labelInfo, {paddingBottom: 1}]}>
+                <Image source={require('../../assets/cake.png')} />{' '}
+                {new Date(dateBirthday).getDate()}/
                 {new Date(dateBirthday).getMonth() + 1}/
                 {new Date(dateBirthday).getFullYear()}
               </Text>

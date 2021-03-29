@@ -40,7 +40,7 @@ export default class CardNote extends Component {
 
     const containerInfoImage = {
       top: containerImageInfo ? -57 : -30,
-      marginBottom: containerImageInfo ? -50 : -10,
+      marginBottom: containerImageInfo ? -40 : -10,
     };
 
     const heightContainer = {

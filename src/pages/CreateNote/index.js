@@ -106,7 +106,10 @@ export default class CreateNote extends Component {
 
   onChangeHandler(field, value) {
     this.setState({
-      [field]: value,
+      note: {
+        ...this.state.note,
+        [field]: value,
+      },
     });
   }
   render() {
