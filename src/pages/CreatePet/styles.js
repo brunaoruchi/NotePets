@@ -6,6 +6,7 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingHorizontal: '3.5%',
+    paddingBottom: 35,
   },
   containerText: {
     width: '100%',
@@ -26,6 +27,11 @@ export default StyleSheet.create({
   },
   containerInputSmall: {
     flex: 1,
+  },
+  label: {
+    fontSize: 18,
+    color: '#481610',
+    fontFamily: 'Roboto-Regular',
   },
   containerInputSmallCalendar: {
     flex: 1,

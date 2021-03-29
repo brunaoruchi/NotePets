@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   container: {
     backgroundColor: '#FFFFFF',
-    width: '100%',
+    width: 325,
     height: 150,
     borderRadius: 20,
     flexDirection: 'row',
@@ -34,10 +34,9 @@ export default StyleSheet.create({
   },
   containerInfo: {
     backgroundColor: '#FFFFFF',
-    width: '100%',
+    width: 325,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    top: -70,
     paddingVertical: '2%',
     paddingRight: '1%',
     justifyContent: 'space-between',

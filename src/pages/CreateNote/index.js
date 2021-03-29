@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import InputWithLabel from '../../components/InputWithLabel';
 import ImageRectangle from '../../components/ImageRectangle';
 import IconButton from '../../components/IconButton';
 import Button from '../../components/Button';
@@ -12,6 +11,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import styles from './styles';
 
 import Header from '../../components/Header';
+import CalendarComponent from '../../components/CalendarComponent';
 
 export default class CreateNote extends Component {
   constructor(props) {
@@ -19,11 +19,19 @@ export default class CreateNote extends Component {
 
     this.state = {
       show: false,
-      date: new Date(),
+      showRemember: false,
       category1: false,
       category2: false,
       category3: false,
       category4: false,
+      date: new Date(),
+      note: {
+        date: new Date().toLocaleDateString('pt-BR'),
+        dateRemember: new Date().toLocaleDateString('pt-BR'),
+        category: '',
+        picture: '',
+        observation: '',
+      },
     };
   }
 
@@ -32,32 +40,62 @@ export default class CreateNote extends Component {
   };
 
   onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || this.date;
+    const currentDate = selectedDate || this.state.date;
     this.setState(currentDate);
     this.setState({show: false});
+    this.setState({
+      note: {
+        ...this.state.note,
+        date: currentDate.toLocaleDateString('pt-BR', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+        }),
+      },
+    });
   };
 
-  onPressCategory(category) {
-    switch (category) {
-      case '1':
+  showModeDateRemember = () => {
+    this.setState({showRemember: true});
+  };
+
+  onChangeDateRemember = (event, selectedDate) => {
+    const currentDate = selectedDate || this.state.date;
+    this.setState(currentDate);
+    this.setState({showRemember: false});
+    this.setState({
+      note: {
+        ...this.state.note,
+        dateRemember: currentDate.toLocaleDateString('pt-BR'),
+      },
+    });
+  };
+
+  onPressCategory(choice) {
+    switch (choice) {
+      case '0':
+        this.setState({note: {...this.state.note, category: choice}});
         this.setState({category1: true});
         this.setState({category2: false});
         this.setState({category3: false});
         this.setState({category4: false});
         return;
-      case '2':
+      case '1':
+        this.setState({note: {...this.state.note, category: choice}});
         this.setState({category1: false});
         this.setState({category2: true});
         this.setState({category3: false});
         this.setState({category4: false});
         return;
-      case '3':
+      case '2':
+        this.setState({note: {...this.state.note, category: choice}});
         this.setState({category1: false});
         this.setState({category2: false});
         this.setState({category3: true});
         this.setState({category4: false});
         return;
-      case '4':
+      default:
+        this.setState({note: {...this.state.note, category: choice}});
         this.setState({category1: false});
         this.setState({category2: false});
         this.setState({category3: false});
@@ -66,6 +104,11 @@ export default class CreateNote extends Component {
     }
   }
 
+  onChangeHandler(field, value) {
+    this.setState({
+      [field]: value,
+    });
+  }
   render() {
     const {category1, category2, category3, category4} = this.state;
 
@@ -86,25 +129,26 @@ export default class CreateNote extends Component {
     };
 
     return (
-      <KeyboardAwareScrollView>
+      <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
         <Header title="Nova anotação" navigation={this.props.navigation} />
         <View style={styles.container}>
-          <Text style={styles.text}>Nova anotação do Rei!</Text>
+          <Text style={styles.text}>
+            Nova anotação: {this.props.route.params.namePet}
+          </Text>
+
           <View style={styles.containerInputSmallRow}>
             <View style={styles.containerInputSmallCalendar}>
-              <InputWithLabel
+              <Text style={styles.label}>Data</Text>
+              <CalendarComponent
+                date={this.state.note.date}
                 onPress={() => this.showMode()}
-                label="Data"
-                placeholder="      /       /     "
-                icon="calendar"
               />
             </View>
             <View style={styles.containerInputSmallCalendar2}>
-              <InputWithLabel
-                onPress={() => this.showMode()}
-                label="Próxima data"
-                placeholder="      /       /     "
-                icon="calendar"
+              <Text style={styles.label}>Próxima data</Text>
+              <CalendarComponent
+                date={this.state.note.dateRemember}
+                onPress={() => this.showModeDateRemember()}
               />
             </View>
           </View>
@@ -112,7 +156,7 @@ export default class CreateNote extends Component {
             <Text style={styles.label}>Categoria</Text>
             <View style={styles.containerButtons}>
               <TouchableOpacity
-                onPress={() => this.onPressCategory('1')}
+                onPress={() => this.onPressCategory('0')}
                 style={[
                   styles.button,
                   category1Style,
@@ -121,7 +165,7 @@ export default class CreateNote extends Component {
                 <FontAwesome5 name="pump-soap" size={21} color="#D76E33" />
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => this.onPressCategory('2')}
+                onPress={() => this.onPressCategory('1')}
                 style={[styles.button, category2Style]}>
                 <MaterialCommunityIcons
                   name="medical-bag"
@@ -130,7 +174,7 @@ export default class CreateNote extends Component {
                 />
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => this.onPressCategory('3')}
+                onPress={() => this.onPressCategory('2')}
                 style={[styles.button, category3Style]}>
                 <MaterialCommunityIcons
                   name="needle"
@@ -139,7 +183,7 @@ export default class CreateNote extends Component {
                 />
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => this.onPressCategory('4')}
+                onPress={() => this.onPressCategory('3')}
                 style={[
                   styles.button,
                   category4Style,
@@ -194,7 +238,7 @@ export default class CreateNote extends Component {
                     size={21}
                     color="#D76E33"
                   />{' '}
-                  Vermifugação
+                  Vermífugo
                 </Text>
               </View>
             </View>
@@ -208,7 +252,7 @@ export default class CreateNote extends Component {
                 <IconButton
                   labelIcon="camera"
                   color="#FFFFFF"
-                  onPress={() => console.log('hey')}
+                  onPress={() => console.log('camera')}
                 />
               </View>
             </View>
@@ -219,6 +263,10 @@ export default class CreateNote extends Component {
               style={styles.inputObservation}
               multiline
               placeholder="Digite as informações importantes..."
+              value={this.state.note.observation}
+              onChangeText={(value) => {
+                this.onChangeHandler('observation', value);
+              }}
             />
           </View>
 
@@ -230,6 +278,15 @@ export default class CreateNote extends Component {
               mode={'date'}
               display="calendar"
               onChange={this.onChange}
+            />
+          )}
+          {this.state.showRemember && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={this.state.date}
+              mode={'date'}
+              display="calendar"
+              onChange={this.onChangeDateRemember}
             />
           )}
         </View>

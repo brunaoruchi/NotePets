@@ -5,8 +5,10 @@ export default StyleSheet.create({
     backgroundColor: '#EDEBCB',
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
+
     paddingHorizontal: '3.5%',
-    paddingBottom: 30,
+    // paddingBottom: 30,
   },
   containerInfo: {
     paddingVertical: 16,

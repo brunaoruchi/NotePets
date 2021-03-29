@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, FlatList} from 'react-native';
+import {FlatList} from 'react-native';
 import Card from '../Card';
 
 export default class Cards extends Component {
@@ -8,8 +8,8 @@ export default class Cards extends Component {
 
     return (
       <FlatList
-        style={StyleSheet.container}
         data={notes}
+        showsVerticalScrollIndicator={false}
         renderItem={({item}) => (
           <Card pet={item} onPress={onPress} onPressAddNote={onPressAddNote} />
         )}

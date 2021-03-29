@@ -11,33 +11,32 @@ export default class Home extends React.Component {
     super(props);
 
     this.state = {
-      id: '1',
       data: {
         pets: [
           {
             id: '1',
             name: 'Zoe',
-            picture: 'https://purr.objects-us-east-1.dream.io/i/wnKv0.jpg',
+            picture:
+              'https://cdn.pixabay.com/photo/2018/01/05/13/00/cat-3062885_960_720.jpg',
             breed: 'SRD',
             weight: '5',
-            dateBirthday: '19/03/18',
-            notesPet: [
+            dateBirthday: '11/15/18',
+            notes: [
               {
                 id: '1',
-                date: '10/02/2021',
-                dateRemember: '17/02/2021',
-                cattegory: '1',
-                picture:
-                  'https://pixabay.com/get/g6f18a10b4e431b08e536c24ed24dfbfa7829ce406097d04a98e492c14ceffc763279b964a65c75ed31f82f6c055304e7_1280.jpg',
-                observation:
-                  'Deve ser aplicado a medicação 1 no período de 12 em 12 horas. Fazer a limpeza da região durante uma semana.',
+                date: '11/15/18',
+                dateRemember: '11/15/18',
+                category: '3',
+                picture: '',
+                observation: '',
               },
               {
                 id: '2',
-                date: '01/02/2021',
-                dateRemember: '10/02/2021',
-                cattegory: '1',
-                picture: 'https://purr.objects-us-east-1.dream.io/i/fqapr.jpg',
+                date: '11/15/18',
+                dateRemember: '11/15/18',
+                category: '1',
+                picture:
+                  'https://cdn.pixabay.com/photo/2014/02/03/11/51/medicine-257349_960_720.jpg',
                 observation:
                   'Deve ser aplicado a medicação 1 no período de 12 em 12 horas. Fazer a limpeza da região durante uma semana.',
               },
@@ -45,29 +44,84 @@ export default class Home extends React.Component {
           },
           {
             id: '2',
-            name: 'Rei',
+            name: 'Mamba',
             picture:
-              'https://pixabay.com/get/g18ddfcce4e20df4e728b32858bb50f99e79a0a83455754b808dc5b10714f00aeb503b46d97db7d1d6884d2810477af9e_1280.jpg',
+              'https://cdn.pixabay.com/photo/2016/07/10/11/58/cat-1507603_960_720.jpg',
             breed: 'SRD',
             weight: '5,25',
-            dateBirthday: '15/11/18',
-            notesPet: [
+            dateBirthday: '11/15/18',
+            notes: [
               {
                 id: '1',
-                date: '10/02/2021',
-                dateRemember: '17/02/2021',
-                cattegory: '1',
-                picture:
-                  'https://pixabay.com/get/g6f18a10b4e431b08e536c24ed24dfbfa7829ce406097d04a98e492c14ceffc763279b964a65c75ed31f82f6c055304e7_1280.jpg',
+                date: '11/15/18',
+                dateRemember: '11/15/18',
+                category: '1',
+                picture: '',
                 observation: '',
               },
               {
                 id: '2',
-                date: '01/02/2021',
-                dateRemember: '10/02/2021',
-                cattegory: '0',
+                date: '11/15/18',
+                dateRemember: '11/15/18',
+                category: '0',
                 picture:
-                  'https://pixabay.com/get/g6f18a10b4e431b08e536c24ed24dfbfa7829ce406097d04a98e492c14ceffc763279b964a65c75ed31f82f6c055304e7_1280.jpg',
+                  'https://cdn.pixabay.com/photo/2017/12/26/12/18/cat-3040345_960_720.jpg',
+                observation: '',
+              },
+            ],
+          },
+          {
+            id: '3',
+            name: 'Guri',
+            picture:
+              'https://cdn.pixabay.com/photo/2017/11/26/08/09/black-german-shepherd-2978321_960_720.jpg',
+            breed: 'SRD',
+            weight: '5,25',
+            dateBirthday: '11/15/18',
+            notes: [
+              {
+                id: '1',
+                date: '11/15/18',
+                dateRemember: '11/15/18',
+                category: '3',
+                picture: '',
+                observation: '',
+              },
+              {
+                id: '2',
+                date: '11/15/18',
+                dateRemember: '11/15/18',
+                category: '2',
+                picture:
+                  'https://adocaocaes.files.wordpress.com/2014/11/carteirinha-de-vacina-aysha-21.jpg',
+                observation: '',
+              },
+            ],
+          },
+          {
+            id: '4',
+            name: 'Kitty',
+            picture:
+              'https://cdn.pixabay.com/photo/2016/08/22/22/23/cat-1613088_960_720.jpg',
+            breed: 'SRD',
+            weight: '5,25',
+            dateBirthday: '11/15/18',
+            notes: [
+              {
+                id: '1',
+                date: '11/15/18',
+                dateRemember: '11/15/18',
+                category: '2',
+                picture: '',
+                observation: '',
+              },
+              {
+                id: '2',
+                date: '11/15/18',
+                dateRemember: '11/15/18',
+                category: '3',
+                picture:
+                  'https://tudodebicho.fbitsstatic.net/img/p/vermifugo-vetmax-plus-caes-e-gatos-70683/257381.jpg?w=580&h=580&v=no-change',
                 observation: '',
               },
             ],
@@ -90,7 +144,9 @@ export default class Home extends React.Component {
           </View>
           <Cards
             notes={this.state.data.pets}
-            onPressAddNote={() => this.props.navigation.navigate('CreateNote')}
+            onPressAddNote={(parameters) =>
+              this.props.navigation.navigate('CreateNote', parameters)
+            }
           />
         </View>
       </>

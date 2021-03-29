@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   container: {
     backgroundColor: '#FFFFFF',
-    width: '100%',
+    width: 325,
     height: 130,
     borderRadius: 20,
     flexDirection: 'row',
@@ -34,7 +34,7 @@ export default StyleSheet.create({
   },
   labelLastNote: {
     height: '70%',
-    fontSize: 18,
+    fontSize: 17,
     fontFamily: 'DidactGothic-Regular',
   },
   containerActions: {
@@ -44,7 +44,7 @@ export default StyleSheet.create({
   },
   containerInfo: {
     backgroundColor: '#FFFFFF',
-    width: '100%',
+    width: 325,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     top: -32,
@@ -54,6 +54,7 @@ export default StyleSheet.create({
     shadowColor: 'rgba(0, 0, 0, 0.25)',
     shadowOffset: {width: 0, height: 4},
     elevation: 6,
+    marginBottom: -15,
   },
   line: {
     backgroundColor: '#D76E33',

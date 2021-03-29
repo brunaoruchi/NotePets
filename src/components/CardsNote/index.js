@@ -1,21 +1,21 @@
 import React, {Component} from 'react';
 import {FlatList} from 'react-native';
-import CardPet from '../CardPet';
+import CardNote from '../CardNote';
 
-export default class CardsPet extends Component {
+export default class CardsNote extends Component {
   render() {
-    const {pets, onPressEdit, onPressDelete, onPressHistory} = this.props;
+    const {notes, onPressDelete, onPressEdit, name} = this.props;
 
     return (
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={pets}
+        data={notes}
         renderItem={({item}) => (
-          <CardPet
-            pet={item}
-            onPressEdit={onPressEdit}
+          <CardNote
+            note={item}
+            name={name}
             onPressDelete={onPressDelete}
-            onPressHistory={onPressHistory}
+            onPressEdit={onPressEdit}
           />
         )}
         keyExtractor={(item) => item.id}

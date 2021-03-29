@@ -10,19 +10,25 @@ export default StyleSheet.create({
     flex: 1,
   },
   containerImage: {
-    height: 120,
+    height: 180,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 25,
   },
   imageStyle: {
-    width: 90,
+    width: 100,
+    resizeMode: 'contain',
+  },
+  imageStyleLabel: {
+    width: 140,
+    top: -10,
     resizeMode: 'contain',
   },
   loginLabel: {
     color: '#992B25',
     fontSize: 22,
     alignSelf: 'center',
-    marginTop: -5,
+    marginTop: -10,
     fontFamily: 'Roboto-Medium',
   },
   containerInput: {
