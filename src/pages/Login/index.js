@@ -36,7 +36,7 @@ export default class Login extends Component {
       });
       showMessage({
         message: this.state.message,
-        duration: 5000,
+        duration: 4000,
         type: 'danger',
       });
     };
