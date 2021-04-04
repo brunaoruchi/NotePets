@@ -62,17 +62,4 @@ export default StyleSheet.create({
     color: '#992B25',
     fontWeight: 'bold',
   },
-  containerSmallCalendar: {
-    width: '100%',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    flexDirection: 'row',
-    height: 50,
-    marginVertical: 16,
-  },
-  containerIconSmallCalendar: {
-    width: '30%',
-  },
 });

@@ -16,8 +16,11 @@ export default class Button extends Component {
     const {label, onPress, flag} = this.props;
     return (
       <TouchableOpacity style={styles.container} onPress={onPress}>
-        {flag ? <ActivityIndicator color="#FFFFFF" size={30} /> :
-        <Text style={styles.label}>{label}</Text>}
+        {flag ? (
+          <ActivityIndicator color="#FFFFFF" size={30} />
+        ) : (
+          <Text style={styles.label}>{label}</Text>
+        )}
       </TouchableOpacity>
     );
   }
