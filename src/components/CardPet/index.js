@@ -8,7 +8,13 @@ import IconButton from '../IconButton';
 
 export default class CardPet extends Component {
   render() {
-    const {pet, onPressEdit, onPressHistory, onPressDelete} = this.props;
+    const {
+      pet,
+      onPressEdit,
+      onPressHistory,
+      onPressDelete,
+      onPressCreate,
+    } = this.props;
 
     const Idade = () => {
       var today = new Date(),
@@ -65,13 +71,21 @@ export default class CardPet extends Component {
             <IconButton
               labelIcon="trash"
               color="#C80000"
-              onPress={onPressDelete}
+              onPress={() => onPressDelete({pet})}
             />
-            <IconButton
-              labelIcon="history"
-              color="#481610"
-              onPress={() => onPressHistory({pet})}
-            />
+            {pet.notes === undefined ? (
+              <IconButton
+                labelIcon="sticker-plus"
+                color="#481610"
+                onPress={() => onPressCreate({pet})}
+              />
+            ) : (
+              <IconButton
+                labelIcon="history"
+                color="#481610"
+                onPress={() => onPressHistory({pet})}
+              />
+            )}
           </View>
         </View>
       </>

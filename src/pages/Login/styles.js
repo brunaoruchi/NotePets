@@ -35,19 +35,9 @@ export default StyleSheet.create({
     marginTop: 5,
     justifyContent: 'space-between',
   },
-  containerLabelForget: {
-    justifyContent: 'flex-start',
-    alignItems: 'flex-end',
-    width: '100%',
-    marginTop: -15,
-  },
-  loginLabelForget: {
-    color: '#992B25',
-    fontSize: 16,
-  },
   containerButton: {
     width: '100%',
-    marginBottom: 70,
-    marginTop: 60,
+    marginBottom: 55,
+    marginTop: 40,
   },
 });

@@ -31,7 +31,7 @@ export default class Register extends Component {
       this.setState({isLoading: false});
       return showMessage({
         message: 'As senhas devem ser iguais!',
-        duration: 5000,
+        duration: 4000,
         type: 'danger',
       });
     }
@@ -52,7 +52,7 @@ export default class Register extends Component {
       });
       showMessage({
         message: this.state.message,
-        duration: 5000,
+        duration: 4000,
         type: 'danger',
       });
     };

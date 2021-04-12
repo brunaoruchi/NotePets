@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import firebase from 'firebase';
 import {showMessage} from 'react-native-flash-message';
+import {connect} from 'react-redux';
+
 import styles from './styles';
 
 import InputDefault from '../../components/InputDefault';
 import ButtonFooter from '../../components/ButtonFooter';
 import Button from '../../components/Button';
 
-export default class Login extends Component {
+import {processLogin} from '../../actions';
+
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -25,31 +28,28 @@ export default class Login extends Component {
     this.setState({isLoading: true});
     const {email, password} = this.state;
 
-    const loginUserSucess = (user) => {
-      this.props.navigation.navigate('Menu');
-      this.setState({email: '', password: '', message: ''});
-    };
-
-    const loginUserFailed = (error) => {
-      this.setState({
-        message: this.getMessageByError(error.code),
-      });
-      showMessage({
-        message: this.state.message,
-        duration: 4000,
-        type: 'danger',
-      });
-    };
-
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(loginUserSucess)
-      .catch((error) => {
-        loginUserFailed(error);
+    this.props
+      .processLogin({email, password})
+      .then((user) => {
+        if (user) {
+          this.props.navigation.replace('Menu');
+        } else {
+          this.setState({
+            isLoading: false,
+            message: '',
+          });
+        }
       })
-      .then(() => {
-        this.setState({isLoading: false});
+      .catch((error) => {
+        this.setState({
+          isLoading: false,
+          message: this.getMessageByError(error.code),
+        });
+        showMessage({
+          message: this.state.message,
+          duration: 4000,
+          type: 'danger',
+        });
       });
   }
 
@@ -107,11 +107,6 @@ export default class Login extends Component {
               }}
             />
           </View>
-          <View style={styles.containerLabelForget}>
-            <TouchableOpacity>
-              <Text style={styles.loginLabelForget}>Esqueceu a senha?</Text>
-            </TouchableOpacity>
-          </View>
 
           <View style={styles.containerButton}>
             <Button
@@ -133,3 +128,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default connect(null, {processLogin})(Login);

@@ -1,7 +1,17 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {
+  View,
+  Text,
+  PermissionsAndroid,
+  Alert,
+  TouchableOpacity,
+} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {RNCamera} from 'react-native-camera';
+
+import {connect} from 'react-redux';
+import {setField, savePet, resetForm} from '../../actions';
 
 import styles from './styles';
 
@@ -12,20 +22,20 @@ import ImageCircle from '../../components/ImageCircle';
 import IconButton from '../../components/IconButton';
 import CalendarContainer from '../../components/CalendarComponent';
 
-export default class CreatePet extends Component {
+class CreatePet extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       show: false,
-      date: new Date(),
-      pet: {
-        name: '',
-        breed: '',
-        weight: '',
-        dateBirthday: new Date().toLocaleDateString('pt-BR'),
-      },
+      isLoading: false,
+      isCamera: false,
     };
+  }
+
+  componentDidMount() {
+    const {resetForm} = this.props;
+    resetForm();
   }
 
   showMode = () => {
@@ -33,23 +43,73 @@ export default class CreatePet extends Component {
   };
 
   onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || this.state.date;
+    const currentDate =
+      selectedDate || new Date(this.props.petForm.dateBirthday);
     this.setState(currentDate);
     this.setState({show: false});
-    this.setState({
-      pet: {
-        ...this.state.pet,
-        dateBirthday: currentDate.toLocaleDateString('pt-BR'),
-      },
-    });
+    this.props.setField(
+      'dateBirthday',
+      currentDate.toLocaleDateString('pt-BR'),
+    );
   };
 
-  onChangeHandler(field, value) {
-    this.setState({
-      pet: {...this.state.pet, [field]: value},
-    });
+  takePicture = async () => {
+    if (this.camera) {
+      const options = {
+        quality: 0.5,
+        base64: true,
+        forceUpOrientation: true,
+        fixOrientation: true,
+      };
+      const data = await this.camera.takePictureAsync(options);
+
+      if (data) {
+        this.props.setField('picture', data.base64);
+
+        this.setState({
+          isCamera: false,
+        });
+      }
+    }
+  };
+
+  viewCamera() {
+    return (
+      <View style={styles.containerCamera}>
+        <RNCamera
+          ref={(ref) => {
+            this.camera = ref;
+          }}
+          style={styles.preview}
+          type={RNCamera.Constants.Type.back}
+          flashMode={RNCamera.Constants.FlashMode.on}
+          androidCameraPermissionOptions={{
+            title: 'Permission to use camera',
+            message: 'Nós precisamos de sua permissão para usar a câmera',
+            buttonPositive: 'Aceito',
+            buttonNegative: 'Cancelar',
+          }}
+          androidRecordAudioPermissionOptions={{
+            title: 'Permission to record audio',
+            message: 'Nós precisamos de sua permissão para gravar áudio',
+            buttonPositive: 'Aceito',
+            buttonNegative: 'Cancelar',
+          }}
+        />
+        <View>
+          <TouchableOpacity
+            style={styles.capture}
+            onPress={this.takePicture.bind(this)}>
+            <Text>Tirar foto!</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
   }
-  render() {
+
+  viewForm() {
+    const {petForm, setField, savePet} = this.props;
+
     return (
       <KeyboardAwareScrollView>
         <Header title="Adicionar pet" navigation={this.props.navigation} />
@@ -58,13 +118,17 @@ export default class CreatePet extends Component {
             Insira todas as informações do seu pet!
           </Text>
           <View style={styles.cameraContainer}>
-            <ImageCircle />
+            <ImageCircle sourceImage={petForm.picture} />
 
             <View style={styles.camera}>
               <IconButton
                 labelIcon="camera"
                 color="#FFFFFF"
-                onPress={() => console.log('camera')}
+                onPress={() => {
+                  this.setState({
+                    isCamera: true,
+                  });
+                }}
               />
             </View>
           </View>
@@ -73,18 +137,16 @@ export default class CreatePet extends Component {
             label="Nome"
             placeholder="Nome"
             icon="bone"
-            value={this.state.pet.name}
-            onChangeText={(value) => {
-              this.onChangeHandler('name', value);
-            }}
+            value={petForm.name}
+            onChangeText={(value) => setField('name', value)}
           />
           <InputWithLabel
             label="Raça"
             placeholder="Raça"
             icon="paw"
-            value={this.state.pet.breed}
+            value={petForm.breed}
             onChangeText={(value) => {
-              this.onChangeHandler('breed', value);
+              setField('breed', value);
             }}
           />
           <View style={styles.containerInputSmallRow}>
@@ -94,9 +156,9 @@ export default class CreatePet extends Component {
                 placeholder="0,00"
                 keyboardType="numeric"
                 icon="weight-kilogram"
-                value={this.state.pet.weight}
+                value={petForm.weight}
                 onChangeText={(value) => {
-                  this.onChangeHandler('weight', value);
+                  setField('weight', value);
                 }}
               />
             </View>
@@ -104,7 +166,7 @@ export default class CreatePet extends Component {
               <Text style={styles.label}>Data de Aniversário</Text>
               <CalendarContainer
                 onPress={() => this.showMode()}
-                date={this.state.pet.dateBirthday}
+                date={petForm.dateBirthday}
               />
             </View>
           </View>
@@ -112,15 +174,51 @@ export default class CreatePet extends Component {
           {this.state.show && (
             <DateTimePicker
               testID="dateTimePicker"
-              value={this.state.date}
+              value={new Date(petForm.dateBirthday)}
               mode={'date'}
               display="calendar"
               onChange={this.onChange}
             />
           )}
-          <Button label="Salvar" />
+          <Button
+            label="Salvar"
+            flag={this.state.isLoading}
+            onPress={async () => {
+              this.setState({isLoading: true});
+              try {
+                await savePet(petForm);
+                this.setState({isLoading: false});
+                this.props.navigation.pop();
+              } catch (error) {
+                this.setState({isLoading: false});
+                Alert.alert('Erro', error.message);
+              }
+            }}
+          />
         </View>
       </KeyboardAwareScrollView>
     );
   }
+
+  render() {
+    if (this.state.isCamera) {
+      return this.viewCamera();
+    }
+
+    return this.viewForm();
+  }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    petForm: state.petForm,
+  };
+};
+
+const mapDispatchToProps = {
+  setField,
+  savePet,
+  resetForm,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePet);

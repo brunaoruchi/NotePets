@@ -27,10 +27,8 @@ export default class Card extends Component {
   render() {
     const {pet, onPressAddNote} = this.props;
 
-    const namePet = pet.name;
-
-    const CategoryIcon = () => {
-      switch (pet.notes[lastNote].category) {
+    const CategoryIcon = (icon) => {
+      switch (icon) {
         case '0': {
           return (
             <FontAwesome5
@@ -73,66 +71,81 @@ export default class Card extends Component {
         }
       }
     };
-
-    const lastNote = pet.notes.length - 1;
     const category = [
       'Banho e Tosa',
       'Consulta Veterinária',
       'Vacinas',
       'Vermífugo',
     ];
-    const date = pet.notes[lastNote].date;
-    const dateRemember = pet.notes[lastNote].dateRemember;
+    let notes, date, dateRemember, lastNote;
 
+    if (pet.notes) {
+      lastNote = Object.keys(pet.notes).length - 1;
+
+      const keys = Object.keys(this.props.pet.notes);
+      notes = keys.map((key) => {
+        return {...this.props.pet.notes[key], id: key};
+      });
+
+      date = notes[lastNote].date;
+      dateRemember = notes[lastNote].dateRemember;
+    }
     return (
       <>
-        <View style={styles.container}>
-          <View style={styles.containerPicture}>
-            <ImageCircle sourceImage={pet.picture} />
-          </View>
-          <View style={styles.containerLabel}>
-            <Text style={styles.labelName}>{pet.name}</Text>
-            <Text style={styles.labelLastNote}>
-              Última anotação: {new Date(date).getDate()}/
-              {new Date(date).getMonth() + 1}/{new Date(date).getFullYear()} -{' '}
-              {category[pet.notes[lastNote].category]} {CategoryIcon()}
-            </Text>
-          </View>
-          <View style={styles.containerActions}>
-            <IconButton
-              labelIcon="sticker-plus"
-              color="#D76E33"
-              onPress={() => onPressAddNote({namePet})}
-            />
-            <TouchableOpacity
-              style={{alignItems: 'center'}}
-              onPress={this.onPressIconArrowDown}>
-              {this.state.openCard ? (
-                <Icon name="angle-up" size={24} color="#481610" />
-              ) : (
-                <Icon name="angle-down" size={24} color="#481610" />
-              )}
-            </TouchableOpacity>
-          </View>
-        </View>
-        {this.state.openCard && (
-          <View style={styles.containerInfo}>
-            <View style={styles.line} />
-            <Text style={styles.nextDate}>
-              Próxima Data: {new Date(dateRemember).getDate()}/
-              {new Date(dateRemember).getMonth() + 1}/
-              {new Date(dateRemember).getFullYear()}
-            </Text>
-            {pet.notes[lastNote].observation !== '' ? (
-              <Text style={styles.observation}>
-                Observação: {pet.notes[lastNote].observation}{' '}
+        {pet.notes && (
+          <View style={styles.container}>
+            <View style={styles.containerPicture}>
+              <ImageCircle sourceImage={pet.picture} />
+            </View>
+            <View style={styles.containerLabel}>
+              <Text style={styles.labelName}>{pet.name}</Text>
+              <Text style={styles.labelLastNote}>
+                Última anotação: {new Date(date).getDate()}/
+                {new Date(date).getMonth() + 1}/{new Date(date).getFullYear()} -{' '}
+                {category[notes[lastNote].category]}{' '}
+                {CategoryIcon(notes[lastNote].category)}
               </Text>
-            ) : null}
-            <View style={styles.photo}>
-              <ImageRectangle sourceImage={pet.notes[lastNote].picture} />
+            </View>
+            <View style={styles.containerActions}>
+              <IconButton
+                labelIcon="sticker-plus"
+                color="#D76E33"
+                onPress={() => onPressAddNote({pet})}
+              />
+              <TouchableOpacity
+                style={{alignItems: 'center'}}
+                onPress={this.onPressIconArrowDown}>
+                {this.state.openCard ? (
+                  <Icon name="angle-up" size={24} color="#481610" />
+                ) : (
+                  <Icon name="angle-down" size={24} color="#481610" />
+                )}
+              </TouchableOpacity>
             </View>
           </View>
         )}
+        <>
+          {this.state.openCard && pet.notes && (
+            <View style={styles.containerInfo}>
+              <View style={styles.line} />
+              <Text style={styles.nextDate}>
+                Próxima Data: {new Date(dateRemember).getDate()}/
+                {new Date(dateRemember).getMonth() + 1}/
+                {new Date(dateRemember).getFullYear()}
+              </Text>
+              {notes[lastNote].observation !== '' ? (
+                <Text style={styles.observation}>
+                  Observação: {notes[lastNote].observation}{' '}
+                </Text>
+              ) : null}
+              {notes[lastNote].picture !== '' ? (
+                <View style={styles.photo}>
+                  <ImageRectangle sourceImage={notes[lastNote].picture} />
+                </View>
+              ) : null}
+            </View>
+          )}
+        </>
       </>
     );
   }

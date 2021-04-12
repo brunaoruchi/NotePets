@@ -13,6 +13,8 @@ import UpdateNote from './pages/UpdateNote';
 import History from './pages/History';
 import Menu from './components/DrawerMenu';
 
+console.disableYellowBox = true;
+
 export default class Routes extends Component {
   render() {
     return (

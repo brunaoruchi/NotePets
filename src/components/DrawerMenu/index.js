@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {View, TouchableOpacity, Image} from 'react-native';
 import {
   createDrawerNavigator,
@@ -15,46 +15,51 @@ import styles from './styles';
 import Home from '../../pages/Home';
 import Pets from '../../pages/Pets';
 
+import {connect} from 'react-redux';
+import {processLogout} from '../../actions';
+
 const Drawer = createDrawerNavigator();
 
 Icon.loadFont();
 MaterialCommunityIcons.loadFont();
 
-export default function Menu() {
-  return (
-    <Drawer.Navigator
-      initialRouteName="Home"
-      drawerStyle={styles.drawerStyle}
-      drawerContentOptions={{labelStyle: {fontSize: 16}}}
-      drawerContent={(props) => <CustomDrawerContent {...props} />}>
-      <Drawer.Screen
-        name="Home"
-        component={Home}
-        options={{
-          drawerIcon: ({focused}) => (
-            <Icon
-              name="home"
-              size={24}
-              color={focused ? '#D76E33' : '#FBC072'}
-            />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="Pets"
-        component={Pets}
-        options={{
-          drawerIcon: ({focused}) => (
-            <Icon
-              name="paw"
-              size={24}
-              color={focused ? '#D76E33' : '#FBC072'}
-            />
-          ),
-        }}
-      />
-    </Drawer.Navigator>
-  );
+class Menu extends React.Component {
+  render() {
+    return (
+      <Drawer.Navigator
+        initialRouteName="Home"
+        drawerStyle={styles.drawerStyle}
+        drawerContentOptions={{labelStyle: {fontSize: 16}}}
+        drawerContent={(props) => <CustomDrawerContent {...props} />}>
+        <Drawer.Screen
+          name="Home"
+          component={Home}
+          options={{
+            drawerIcon: ({focused}) => (
+              <Icon
+                name="home"
+                size={24}
+                color={focused ? '#D76E33' : '#FBC072'}
+              />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Pets"
+          component={Pets}
+          options={{
+            drawerIcon: ({focused}) => (
+              <Icon
+                name="paw"
+                size={24}
+                color={focused ? '#D76E33' : '#FBC072'}
+              />
+            ),
+          }}
+        />
+      </Drawer.Navigator>
+    );
+  }
 }
 
 function CustomDrawerContent(props) {
@@ -72,7 +77,8 @@ function CustomDrawerContent(props) {
         label="Sair"
         labelStyle={{color: '#D40000', fontSize: 16}}
         onPress={() => {
-          props.navigation.popToTop();
+          processLogout();
+          props.navigation.replace('Login');
         }}
         icon={() => (
           <MaterialCommunityIcons name="logout" size={26} color="#D40000" />
@@ -105,3 +111,5 @@ function ProfileDrawer(props) {
 function LineDrawer() {
   return <View style={styles.line} />;
 }
+
+export default connect(null, {processLogout})(Menu);

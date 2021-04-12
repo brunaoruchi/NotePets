@@ -4,7 +4,7 @@ import CardNote from '../CardNote';
 
 export default class CardsNote extends Component {
   render() {
-    const {notes, onPressDelete, onPressEdit, name} = this.props;
+    const {notes, onPressDelete, onPressEdit, name, id} = this.props;
 
     return (
       <FlatList
@@ -14,6 +14,7 @@ export default class CardsNote extends Component {
           <CardNote
             note={item}
             name={name}
+            id={id}
             onPressDelete={onPressDelete}
             onPressEdit={onPressEdit}
           />

@@ -15,7 +15,6 @@ export default class CalendarContainer extends Component {
         <Text style={styles.containerText}>
           {new Date(date).getDate()} / {new Date(date).getMonth() + 1} /{' '}
           {new Date(date).getFullYear()}
-          {/* {date} */}
         </Text>
       </TouchableOpacity>
     );
