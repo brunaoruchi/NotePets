@@ -6,7 +6,7 @@ import styles from './styles';
 
 Icon.loadFont();
 
-export default class InputWithLabel extends Component {
+export default class Header extends Component {
   render() {
     const {title, navigation} = this.props;
     const titleHeader = ['Anotações', 'Pets'];

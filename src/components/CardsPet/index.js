@@ -4,7 +4,13 @@ import CardPet from '../CardPet';
 
 export default class CardsPet extends Component {
   render() {
-    const {pets, onPressEdit, onPressDelete, onPressHistory} = this.props;
+    const {
+      pets,
+      onPressEdit,
+      onPressDelete,
+      onPressHistory,
+      onPressCreate,
+    } = this.props;
 
     return (
       <FlatList
@@ -16,6 +22,7 @@ export default class CardsPet extends Component {
             onPressEdit={onPressEdit}
             onPressDelete={onPressDelete}
             onPressHistory={onPressHistory}
+            onPressCreate={onPressCreate}
           />
         )}
         keyExtractor={(item) => item.id}

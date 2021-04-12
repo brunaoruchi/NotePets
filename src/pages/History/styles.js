@@ -6,9 +6,7 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-
     paddingHorizontal: '3.5%',
-    // paddingBottom: 30,
   },
   containerInfo: {
     paddingVertical: 16,

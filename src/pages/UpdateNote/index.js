@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {View, Text, TextInput, TouchableOpacity} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity, Alert} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import {RNCamera} from 'react-native-camera';
 import ImageRectangle from '../../components/ImageRectangle';
 import IconButton from '../../components/IconButton';
 import Button from '../../components/Button';
@@ -13,7 +14,10 @@ import styles from './styles';
 import Header from '../../components/Header';
 import CalendarComponent from '../../components/CalendarComponent';
 
-export default class UpdateNote extends Component {
+import {connect} from 'react-redux';
+import {setFieldNote, saveNote, setAllFieldsNote} from '../../actions';
+
+class UpdateNote extends Component {
   constructor(props) {
     super(props);
 
@@ -24,14 +28,8 @@ export default class UpdateNote extends Component {
       category2: false,
       category3: false,
       category4: false,
-      date: new Date(),
-      note: {
-        date: '',
-        dateRemember: '',
-        category: '',
-        picture: '',
-        observation: '',
-      },
+      isLoading: false,
+      isCamera: false,
     };
   }
 
@@ -40,12 +38,10 @@ export default class UpdateNote extends Component {
   };
 
   onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || this.state.date;
+    const currentDate = selectedDate || new Date(this.props.noteForm.date);
     this.setState(currentDate);
     this.setState({show: false});
-    this.setState({
-      note: {...this.state.note, date: currentDate.toLocaleDateString('pt-Br')},
-    });
+    this.props.setFieldNote('date', currentDate.toLocaleDateString('pt-BR'));
   };
 
   showModeDateRemember = () => {
@@ -53,42 +49,41 @@ export default class UpdateNote extends Component {
   };
 
   onChangeDateRemember = (event, selectedDate) => {
-    const currentDate = selectedDate || this.state.date;
+    const currentDate =
+      selectedDate || new Date(this.props.noteForm.dateRemember);
     this.setState(currentDate);
     this.setState({showRemember: false});
-    this.setState({
-      note: {
-        ...this.state.note,
-        dateRemember: currentDate.toLocaleDateString('pt-Br'),
-      },
-    });
+    this.props.setFieldNote(
+      'dateRemember',
+      currentDate.toLocaleDateString('pt-BR'),
+    );
   };
 
   onPressCategory(choice) {
     switch (choice) {
       case '0':
-        this.setState({note: {...this.state.note, category: choice}});
+        this.props.setFieldNote('category', choice);
         this.setState({category1: true});
         this.setState({category2: false});
         this.setState({category3: false});
         this.setState({category4: false});
         return;
       case '1':
-        this.setState({note: {...this.state.note, category: choice}});
+        this.props.setFieldNote('category', choice);
         this.setState({category1: false});
         this.setState({category2: true});
         this.setState({category3: false});
         this.setState({category4: false});
         return;
       case '2':
-        this.setState({note: {...this.state.note, category: choice}});
+        this.props.setFieldNote('category', choice);
         this.setState({category1: false});
         this.setState({category2: false});
         this.setState({category3: true});
         this.setState({category4: false});
         return;
       default:
-        this.setState({note: {...this.state.note, category: choice}});
+        this.props.setFieldNote('category', choice);
         this.setState({category1: false});
         this.setState({category2: false});
         this.setState({category3: false});
@@ -98,22 +93,69 @@ export default class UpdateNote extends Component {
   }
 
   async componentDidMount() {
-    await this.setState({
-      note: {...this.props.route.params.note},
-    });
-    this.onPressCategory(this.state.note.category);
-    return;
+    const {setAllFieldsNote} = this.props;
+    const note = this.props.route.params.note;
+    await setAllFieldsNote(note);
+    this.onPressCategory(this.props.noteForm.category);
   }
 
-  onChangeHandler(field, value) {
-    this.setState({
-      note: {
-        ...this.state.note,
-        [field]: value,
-      },
-    });
+  takePicture = async () => {
+    if (this.camera) {
+      const options = {
+        quality: 0.5,
+        base64: true,
+        forceUpOrientation: true,
+        fixOrientation: true,
+      };
+      const data = await this.camera.takePictureAsync(options);
+
+      if (data) {
+        this.props.setFieldNote('picture', data.base64);
+
+        this.setState({
+          isCamera: false,
+        });
+      }
+    }
+  };
+
+  viewCamera() {
+    return (
+      <View style={styles.containerCamera}>
+        <RNCamera
+          ref={(ref) => {
+            this.camera = ref;
+          }}
+          style={styles.preview}
+          type={RNCamera.Constants.Type.back}
+          flashMode={RNCamera.Constants.FlashMode.on}
+          androidCameraPermissionOptions={{
+            title: 'Permission to use camera',
+            message: 'Nós precisamos de sua permissão para usar a câmera',
+            buttonPositive: 'Aceito',
+            buttonNegative: 'Cancelar',
+          }}
+          androidRecordAudioPermissionOptions={{
+            title: 'Permission to record audio',
+            message: 'Nós precisamos de sua permissão para gravar áudio',
+            buttonPositive: 'Aceito',
+            buttonNegative: 'Cancelar',
+          }}
+        />
+        <View>
+          <TouchableOpacity
+            style={styles.capture}
+            onPress={this.takePicture.bind(this)}>
+            <Text>Tirar foto!</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
   }
-  render() {
+
+  viewForm() {
+    const {noteForm, setFieldNote, saveNote} = this.props;
+
     const {category1, category2, category3, category4} = this.state;
 
     const category1Style = {
@@ -143,14 +185,14 @@ export default class UpdateNote extends Component {
             <View style={styles.containerInputSmallCalendar}>
               <Text style={styles.label}>Data</Text>
               <CalendarComponent
-                date={this.state.note.date}
+                date={noteForm.date}
                 onPress={() => this.showMode()}
               />
             </View>
             <View style={styles.containerInputSmallCalendar2}>
               <Text style={styles.label}>Próxima data</Text>
               <CalendarComponent
-                date={this.state.note.dateRemember}
+                date={noteForm.dateRemember}
                 onPress={() => this.showModeDateRemember()}
               />
             </View>
@@ -250,12 +292,16 @@ export default class UpdateNote extends Component {
           <View style={styles.containerLabelCamera}>
             <Text style={styles.label}>Foto</Text>
             <View style={styles.cameraContainer}>
-              <ImageRectangle sourceImage={this.state.note.picture} />
+              <ImageRectangle sourceImage={noteForm.picture} />
               <View style={styles.camera}>
                 <IconButton
                   labelIcon="camera"
                   color="#FFFFFF"
-                  onPress={() => console.log('camera')}
+                  onPress={() => {
+                    this.setState({
+                      isCamera: true,
+                    });
+                  }}
                 />
               </View>
             </View>
@@ -266,18 +312,30 @@ export default class UpdateNote extends Component {
               style={styles.inputObservation}
               multiline
               placeholder="Digite as informações importantes..."
-              value={this.state.note.observation}
-              onChangeText={(value) => {
-                this.onChangeHandler('observation', value);
-              }}
+              value={noteForm.observation}
+              onChangeText={(value) => setFieldNote('observation', value)}
             />
           </View>
 
-          <Button label="Salvar" />
+          <Button
+            label="Salvar"
+            flag={this.state.isLoading}
+            onPress={async () => {
+              this.setState({isLoading: true});
+              try {
+                await saveNote(this.props.route.params.id, noteForm);
+                this.setState({isLoading: false});
+                this.props.navigation.pop();
+              } catch (error) {
+                this.setState({isLoading: false});
+                Alert.alert('Erro', error.message);
+              }
+            }}
+          />
           {this.state.show && (
             <DateTimePicker
               testID="dateTimePicker"
-              value={this.state.date}
+              value={new Date(noteForm.date)}
               mode={'date'}
               display="calendar"
               onChange={this.onChange}
@@ -286,7 +344,7 @@ export default class UpdateNote extends Component {
           {this.state.showRemember && (
             <DateTimePicker
               testID="dateTimePicker"
-              value={this.state.date}
+              value={new Date(noteForm.dateRemember)}
               mode={'date'}
               display="calendar"
               onChange={this.onChangeDateRemember}
@@ -296,4 +354,25 @@ export default class UpdateNote extends Component {
       </KeyboardAwareScrollView>
     );
   }
+
+  render() {
+    if (this.state.isCamera) {
+      return this.viewCamera();
+    }
+
+    return this.viewForm();
+  }
 }
+const mapStateToProps = (state) => {
+  return {
+    noteForm: state.noteForm,
+  };
+};
+
+const mapDispatchToProps = {
+  setFieldNote,
+  saveNote,
+  setAllFieldsNote,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateNote);

@@ -35,7 +35,7 @@ export default class CardNote extends Component {
   };
 
   render() {
-    const {note, name, onPressEdit, onPressDelete} = this.props;
+    const {note, id, name, onPressEdit, onPressDelete} = this.props;
     const {containerSize, containerImageInfo, arrowUp} = this.state;
 
     const containerInfoImage = {
@@ -97,12 +97,12 @@ export default class CardNote extends Component {
             <IconButton
               labelIcon="pencil"
               color="#D76E33"
-              onPress={() => onPressEdit({note, name})}
+              onPress={() => onPressEdit({note, name, id})}
             />
             <IconButton
               labelIcon="trash"
               color="#C80000"
-              onPress={onPressDelete}
+              onPress={() => onPressDelete({id, note})}
             />
             {note.observation === '' ? (
               <>
