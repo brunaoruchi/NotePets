@@ -37,7 +37,7 @@ export default StyleSheet.create({
   },
   containerButton: {
     width: '100%',
-    marginBottom: 55,
-    marginTop: 40,
+    marginBottom: 80,
+    marginTop: 60,
   },
 });
