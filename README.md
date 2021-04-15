@@ -3,7 +3,7 @@
 ___
 
 <p align="center">
-  <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/Logo.png" width="300" heigth="300">
+  <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/Logo.png">
 </p>
 
 ___
