@@ -1,18 +1,17 @@
 <h2 align="center">NotePets</h2>
+
 ___
 
-
+<img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/Logo.png" width="300" heigth="300">
 ___
 
 ## :information_source: Sobre
 
-Projeto desenvolvido para a disciplina Programção Móvel. O aplicativo tem como objetivo organizar as informações dos animais de estimação, tais como consultas veterinárias, vacinas, vermífugo, banho e tosa.
+Projeto desenvolvido para a disciplina Programação Móvel. O aplicativo tem como objetivo organizar as informações dos animais de estimação, tais como consultas veterinárias, vacinas, vermífugo, banho e tosa.
 
 ## Prototipação da Aplicação
 
-- A prototipação de alta fidelidade foi desenvolvida através da ferramenta Figma: 
-
-<a href=" https://www.figma.com/proto/ghbAoJZueuv7vwwEbfUynJ/ProjetoMobileNotePets?node-id=0%3A3&scaling=min-zoom">Mockup do NotePets</a>
+- A prototipação de alta fidelidade foi desenvolvida através da ferramenta Figma: <a href=" https://www.figma.com/proto/ghbAoJZueuv7vwwEbfUynJ/ProjetoMobileNotePets?node-id=0%3A3&scaling=min-zoom">Mockup do NotePets</a>
 
 ## :heavy_check_mark: Requisitos Exigidos na Parte 1
 
