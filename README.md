@@ -54,7 +54,12 @@ ___
 # Screenshots
 
 <p align="center">
+  <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/Login.jpeg" width="250">
+  <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/Register.jpeg" width="250">
   <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/Home_CloseAnnotation.jpeg" width="250">
+  <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/Home_OpenAnnotation.jpeg" width="250">
+  <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/CreateAnnotation.jpeg" width="250">
+  <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/DrawerMenu.jpeg" width="250">
 </p>
 
 ___
