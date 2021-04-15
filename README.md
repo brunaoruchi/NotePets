@@ -52,3 +52,10 @@ ___
 ___
 
 # Screenshots
+
+<p align="center">
+  <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/Home_CloseAnnotation.jpeg" width="150">
+</p>
+
+___
+
