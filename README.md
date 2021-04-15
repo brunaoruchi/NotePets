@@ -56,14 +56,14 @@ ___
 <p align="center">
   <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/Login.jpeg" width="200">
   <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/Register.jpeg" width="200">
-  <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/DrawerMenu.jpeg" width="200">
   <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/Home_CloseAnnotation.jpeg" width="200">
   <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/Home_OpenAnnotation.jpeg" width="200">
+  <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/DrawerMenu.jpeg" width="200">
   <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/CreateAnnotation.jpeg" width="200">
   <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/UpdateAnnotation.jpeg" width="200">
   <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/Pets.jpeg" width="200">
-  <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/CreatePet.jpeg" width="200">
   <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/UpdatePet.jpeg" width="200">
+  <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/CreatePet.jpeg" width="200">
   <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/History.jpeg" width="200">
 </p>
 
