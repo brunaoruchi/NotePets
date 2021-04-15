@@ -14,7 +14,7 @@ Projeto desenvolvido para a disciplina Programação Móvel. O aplicativo tem co
 
 ___
 
-## Prototipação da Aplicação
+## 📱 Prototipação da Aplicação
 
 - A prototipação de alta fidelidade foi desenvolvida através da ferramenta Figma: <a href="https://www.figma.com/proto/ghbAoJZueuv7vwwEbfUynJ/ProjetoMobileNotePets?node-id=0%3A3&scaling=min-zoom">Mockup do NotePets</a>
 
@@ -51,7 +51,7 @@ ___
 
 ___
 
-# Screenshots
+# 📷 Screenshots
 
 <p align="center">
   <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/Login.jpeg" width="200">
