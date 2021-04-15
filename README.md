@@ -2,7 +2,10 @@
 
 ___
 
-<img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/Logo.png" width="300" heigth="300">
+<p align="center">
+  <img src="https://github.com/brunaoruchi/NotePets/blob/master/screenshots/Logo.png" width="300" heigth="300">
+</p>
+
 ___
 
 ## :information_source: Sobre
