@@ -12,9 +12,13 @@ ___
 
 Projeto desenvolvido para a disciplina Programação Móvel. O aplicativo tem como objetivo organizar as informações dos animais de estimação, tais como consultas veterinárias, vacinas, vermífugo, banho e tosa.
 
+___
+
 ## Prototipação da Aplicação
 
 - A prototipação de alta fidelidade foi desenvolvida através da ferramenta Figma: <a href=" https://www.figma.com/proto/ghbAoJZueuv7vwwEbfUynJ/ProjetoMobileNotePets?node-id=0%3A3&scaling=min-zoom">Mockup do NotePets</a>
+
+___
 
 ## :heavy_check_mark: Requisitos Exigidos na Parte 1
 
@@ -31,6 +35,7 @@ Projeto desenvolvido para a disciplina Programação Móvel. O aplicativo tem co
 - O protótipo mostra a integração de dados entre suas funcionalidades?
 - O protótipo apresenta as telas que envolvam no mínimo 2 CRUDS. Importante: cadastro de login/usuário não entra nessa contabilização
 
+___
 
 ## :white_check_mark: Requisitos Exigidos na Parte 2
 
