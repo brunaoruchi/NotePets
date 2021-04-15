@@ -16,7 +16,7 @@ ___
 
 ## Prototipação da Aplicação
 
-- A prototipação de alta fidelidade foi desenvolvida através da ferramenta Figma: <a href=" https://www.figma.com/proto/ghbAoJZueuv7vwwEbfUynJ/ProjetoMobileNotePets?node-id=0%3A3&scaling=min-zoom">Mockup do NotePets</a>
+- A prototipação de alta fidelidade foi desenvolvida através da ferramenta Figma: <a href="https://www.figma.com/proto/ghbAoJZueuv7vwwEbfUynJ/ProjetoMobileNotePets?node-id=0%3A3&scaling=min-zoom">Mockup do NotePets</a>
 
 ___
 
